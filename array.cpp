@@ -45,3 +45,22 @@ vector<int> ARRAY::twoSum(vector<int> nums, int target){
     } 
     return res;
 }
+
+vector<vector<string>> ARRAY::groupAnagrams(vector<string> strs){
+    vector<vector<string>> res;
+    unordered_map<string, vector<string>> mp;
+
+    // map will be < sorted string, {list of the initial unosorted string}>
+
+    // Input: strs = ["eat","tea","tan","ate","nat","bat"]
+    // Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+    for(int i = 0; i < strs.size(); i++){
+        string str = strs[i];
+        std::sort(strs[i].begin(), strs[i].end()); // string [i] is sorted 
+        mp[strs[i]].push_back(str); // <sorted string1, {unsorted string1}>
+    }
+    for(auto i : mp){
+        res.push_back(i.second);
+    }
+    return res;
+}
