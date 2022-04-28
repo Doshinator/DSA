@@ -18,7 +18,6 @@ int main(){
     Test({0, 1}, a->twoSum({2,7,11,15}, 9));
     Test({1, 2}, a->twoSum({3,2,4}, 6));
 
-    Test({{"bat"},{"nat","tan"},{"ate","eat","tea"}}, a->groupAnagrams({"eat","tea","tan","ate","nat","bat"}));
 
     Test::printResult();
     return 0;
