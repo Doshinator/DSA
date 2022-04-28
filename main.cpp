@@ -14,6 +14,10 @@ int main(){
     Test(true, a->isAnagram("anagram", "nagaram"));
     Test(false, a->isAnagram("car", "rat"));
 
+
+    Test({0, 1}, a->twoSum({2,7,11,15}, 9));
+    Test({1, 2}, a->twoSum({3,2,4}, 6));
+
     Test::printResult();
     return 0;
     
