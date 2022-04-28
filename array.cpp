@@ -88,3 +88,26 @@ vector<int> ARRAY::topKFrequent(vector<int> nums, int k){
     }
     return res;
 }
+
+vector<int> ARRAY::productExceptSelf(vector<int> nums){
+    // Input: nums = [1,2,3,4]
+    // Output: [24,12,8,6]
+
+    // split into two arrays L and R
+    // L array is product of all element left of i'th element 
+    // R array is product of all element right of i'th element 
+    // combine the array / multiple the L and R array
+    vector<int> res(nums.size());
+    int multiple = 1;
+
+    for(int i = 0; i < nums.size(); i++){
+        res[i] = multiple;
+        multiple = multiple * nums[i];
+    }
+    multiple = 1;
+    for(int i = nums.size() - 1; i >= 0 ; i--){
+        res[i] = multiple * res[i];
+        multiple = multiple * nums[i];
+    }
+    return res;
+}
