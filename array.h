@@ -13,6 +13,7 @@ class ARRAY{
     bool isAnagram(string s, string t);
     vector<int> twoSum(vector<int> nums, int target);
     vector<vector<string>> groupAnagrams(vector<string> strs);
+    vector<int> topKFrequent(vector<int> nums, int k);
 };
 
 

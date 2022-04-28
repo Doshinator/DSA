@@ -64,3 +64,27 @@ vector<vector<string>> ARRAY::groupAnagrams(vector<string> strs){
     }
     return res;
 }
+
+vector<int> ARRAY::topKFrequent(vector<int> nums, int k){
+    // Input: nums = [1,1,1,2,2,3], k = 2
+    // Output: [1,2]
+    vector<int> res;
+    vector<vector<int>> numList(nums.size() + 1);
+    unordered_map<int,int> m;
+
+    for(int i = 0; i < nums.size(); i++){
+        m[nums[i]]++;
+    }
+
+    for(auto i : m){
+        numList[i.second].push_back(i.first);
+    }
+
+    for(int i = numList.size() - 1; i >= 0 && res.size() < k; i--){
+        for(int j = 0; j < numList[i].size(); j++){
+            res.push_back(numList[i][j]);
+           
+        }
+    }
+    return res;
+}
