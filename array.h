@@ -11,6 +11,7 @@ class ARRAY{
     public:
     bool containsDuplicate(vector<int> nums);
     bool isAnagram(string s, string t);
+    vector<int> twoSum(vector<int> nums, int target);
 };
 
 
