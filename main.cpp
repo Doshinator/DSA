@@ -21,6 +21,8 @@ int main(){
     Test({1, 2}, a->topKFrequent({1,1,1,2,2,3},2));
     Test({1}, a->topKFrequent({1}, 1));
 
+    Test({24,12,8,6}, a->productExceptSelf({1,2,3,4}));
+
     Test::printResult();
     return 0;
     
