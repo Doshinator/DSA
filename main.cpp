@@ -1,6 +1,6 @@
 #include "array.h"
 #include "test.h"
-
+#include <iostream>
 
 
 
@@ -22,6 +22,15 @@ int main(){
     Test({1}, a->topKFrequent({1}, 1));
 
     Test({24,12,8,6}, a->productExceptSelf({1,2,3,4}));
+
+
+    
+    std::cout << a->encode({"Hello", "World"}) << std::endl;
+
+    for(int i = 0; i < a->decode(a->encode({"Hello", "World"})).size() ; i++){
+        std::cout << a->decode(a->encode({"Hello", "World"}))[i] << endl;
+    }
+    
 
     Test::printResult();
     return 0;
