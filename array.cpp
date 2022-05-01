@@ -5,6 +5,8 @@
 #include <unordered_map>
 
 
+
+
 bool ARRAY::containsDuplicate(vector<int> nums){
 
     return nums.size() > set<int>(nums.begin(), nums.end()).size();
@@ -110,4 +112,51 @@ vector<int> ARRAY::productExceptSelf(vector<int> nums){
         multiple = multiple * nums[i];
     }
     return res;
+}
+
+
+bool ARRAY::isValidSudoku(vector<vector<char>> board){
+
+    /*
+        Input: board = 
+        [["5","3",".",".","7",".",".",".","."]
+        ,["6",".",".","1","9","5",".",".","."]
+        ,[".","9","8",".",".",".",".","6","."]
+        ,["8",".",".",".","6",".",".",".","3"]
+        ,["4",".",".","8",".","3",".",".","1"]
+        ,["7",".",".",".","2",".",".",".","6"]
+        ,[".","6",".",".",".",".","2","8","."]
+        ,[".",".",".","4","1","9",".",".","5"]
+        ,[".",".",".",".","8",".",".","7","9"]]
+        Output: true
+    */
+    int row = board[0].size();
+    int col = board.size();
+
+    unordered_map<int,set<char>> rows(9);
+    unordered_map<int,set<char>> cols(9);
+    unordered_map<int,set<char>> block;
+    
+    // loop through the board rows - add into map
+    // if row hashmap contains duplicate while looping through col - return false 
+    // if col hashmap contains duplicate while looping through - return false
+    // if the 3x3 contains duplicate while looping - return false
+
+    for(int r = 0; r < row; r++){
+        for(int c = 0; c < col; c++){
+            if(board[r][c] == '.')
+                continue;
+            if(rows[r].find(board[r][c]) != rows[r].end() ||
+                cols[c].find(board[r][c]) != cols[c].end() ||
+                block[(r / 3) * 3 + c / 3].find(board[r][c]) != block[(r / 3) * 3 + c / 3].end())
+                    return false;
+                
+            rows[r].insert(board[r][c]);
+            cols[c].insert(board[r][c]);
+            // to calculate the position of the block - (r / 3) * 3 + c / 3
+            block[(r / 3) * 3 + c / 3].insert(board[r][c]);
+        }
+    }
+
+    return true;
 }
