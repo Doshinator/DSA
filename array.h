@@ -15,6 +15,7 @@ class ARRAY{
     vector<vector<string>> groupAnagrams(vector<string> strs);
     vector<int> topKFrequent(vector<int> nums, int k);
     vector<int> productExceptSelf(vector<int> nums);
+    bool isValidSudoku(vector<vector<char>> board);
 };
 
 
