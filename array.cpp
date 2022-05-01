@@ -160,3 +160,33 @@ bool ARRAY::isValidSudoku(vector<vector<char>> board){
 
     return true;
 }
+
+
+string ARRAY::encode(vector<string> strs){
+    string res;
+    string delimiter = "#";
+    for(int i = 0; i < strs.size(); i++){
+        res.append(to_string(strs[i].size()) + delimiter + strs[i]);
+    }
+
+    return res;
+}
+
+vector<string> ARRAY::decode(string str){
+    vector<string> res;
+    size_t pos = 0;
+    string token;
+    string delimiter = "#";
+
+    int i = 0;
+    while(i < str.size()){
+        int j = i;
+        if(j != '#')
+            j++;
+        int strLength = stoi(str.substr(i, j));
+        res.push_back(str.substr(j + 1, strLength)); // substr(index, # of characters to include in the substring)
+        i = j + 1 + strLength;
+    }
+
+    return res;
+}

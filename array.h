@@ -16,6 +16,8 @@ class ARRAY{
     vector<int> topKFrequent(vector<int> nums, int k);
     vector<int> productExceptSelf(vector<int> nums);
     bool isValidSudoku(vector<vector<char>> board);
+    string encode(vector<string> strs);
+    vector<string> decode(string str);
 };
 
 
