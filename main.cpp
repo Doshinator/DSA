@@ -35,6 +35,9 @@ int main(){
     Test({1, 3}, p->twoSum({2,3,4}, 6));
     
 
+    Test(49, p->maxArea({1,8,6,2,5,4,8,3,7}));
+    Test(1, p->maxArea({1,1}));
+
     Test::printResult();
     return 0;
     
