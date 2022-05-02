@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "unordered_map": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "set": "cpp",
+        "__tree": "cpp",
+        "bitset": "cpp",
+        "iosfwd": "cpp",
+        "string": "cpp",
+        "unordered_set": "cpp",
+        "functional": "cpp",
+        "map": "cpp"
+    }
+}

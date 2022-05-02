@@ -1,5 +1,6 @@
 #include "array.h"
 #include "test.h"
+#include "two_ptr.h"
 #include <iostream>
 
 
@@ -7,6 +8,7 @@
 int main(){
 
     ARRAY *a;
+    TWO_PTR *p;
 
     Test(true, a->containsDuplicate({5, 4, 4, 3}));
     Test(false, a->containsDuplicate({5, 1, 4, 3, 2}));
@@ -26,6 +28,8 @@ int main(){
     Test(4, a->longestConsecutive({100,4,200,1,3,2}));
     Test(9, a->longestConsecutive({0,3,7,2,5,8,4,6,0,1}));
 
+
+    Test(1, p->isPalindrome("atoyotasatoyota"));
 
     Test::printResult();
     return 0;
