@@ -16,8 +16,6 @@ bool TWO_PTR::isPalindrome(string s){
 vector<int> TWO_PTR::twoSum(vector<int> numbers, int target) {
     vector<int> res(2, -1);
     int l = 0, r = numbers.size() - 1;
-    // 2,7,11,15
-    // 1, 2
     while(l < r){
         if(numbers[l] + numbers[r] == target){
             return {l + 1, r + 1};
@@ -28,6 +26,6 @@ vector<int> TWO_PTR::twoSum(vector<int> numbers, int target) {
         else
             l++;
     }
-    
+
     return res;
 }
