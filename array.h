@@ -18,6 +18,7 @@ class ARRAY{
     bool isValidSudoku(vector<vector<char>> board);
     string encode(vector<string> strs);
     vector<string> decode(string str);
+    int longestConsecutive(vector<int> nums);
 };
 
 

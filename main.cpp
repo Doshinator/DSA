@@ -23,14 +23,9 @@ int main(){
 
     Test({24,12,8,6}, a->productExceptSelf({1,2,3,4}));
 
+    Test(4, a->longestConsecutive({100,4,200,1,3,2}));
+    Test(9, a->longestConsecutive({0,3,7,2,5,8,4,6,0,1}));
 
-    
-    std::cout << a->encode({"Hello", "World"}) << std::endl;
-
-    for(int i = 0; i < a->decode(a->encode({"Hello", "World"})).size() ; i++){
-        std::cout << a->decode(a->encode({"Hello", "World"}))[i] << endl;
-    }
-    
 
     Test::printResult();
     return 0;
