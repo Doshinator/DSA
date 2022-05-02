@@ -32,7 +32,7 @@ vector<int> TWO_PTR::twoSum(vector<int> numbers, int target) {
 }
 
 
-vector<vector<int>> threeSum(vector<int> nums){
+vector<vector<int>> TWO_PTR::threeSum(vector<int> nums){
     vector<vector<int>> res;
     // Input: nums = [-1,0,1,2,-1,-4]
     // Output: [[-1,-1,2],[-1,0,1]]
@@ -65,4 +65,24 @@ vector<vector<int>> threeSum(vector<int> nums){
         
     }
     return res;
+}
+
+
+int TWO_PTR::maxArea(vector<int> height){
+    // Input: height = [1,8,6,2,5,4,8,3,7]
+    // Output: 49
+
+    int maxArea = INT_MIN;
+    int l = 0, r = height.size() - 1;
+
+    while(l < r){
+        int area = (r - l) * min(height[l], height[r]);
+        maxArea = max(maxArea, area);
+        if(height[l] > height[r])
+            r--;
+        else 
+            l++;
+    }
+
+    return maxArea;
 }

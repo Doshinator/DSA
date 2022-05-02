@@ -11,6 +11,7 @@ class TWO_PTR{
     bool isPalindrome(string s);
     vector<int> twoSum(vector<int> numbers, int target);
     vector<vector<int>> threeSum(vector<int> nums);
+    int maxArea(vector<int> height);
 };
 
 
