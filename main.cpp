@@ -31,6 +31,8 @@ int main(){
 
     Test(1, p->isPalindrome("atoyotasatoyota"));
 
+    Test({1, 2}, p->twoSum({2,7,11,15}, 9));
+
     Test::printResult();
     return 0;
     
