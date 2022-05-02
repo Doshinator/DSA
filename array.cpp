@@ -203,7 +203,8 @@ int ARRAY::longestConsecutive(vector<int> nums){
     // for the deleted element, look at the previous and next element to see if those are in the set
     // start expanding the window and deleting those elements found from the set
     // take the max of current window size and new window size
-    
+    if(nums.empty())
+        return 0;
     int res = 1;
     unordered_set<int> num(nums.begin(), nums.end());
     
