@@ -3,6 +3,7 @@
 #include <string>
 #include <set>
 #include <unordered_map>
+#include <unordered_set>
 
 
 
@@ -188,5 +189,44 @@ vector<string> ARRAY::decode(string str){
         i = j + 1 + strLength;
     }
 
+    return res;
+}
+
+
+int ARRAY::longestConsecutive(vector<int> nums){
+    // Input: nums = [100,4,200,1,3,2]
+    // Output: 4
+    // [1, 2, 3, 4]
+
+    // insert all nums into unordered_set
+    // go through nums and start deleting .. if it's not in the set - continue
+    // for the deleted element, look at the previous and next element to see if those are in the set
+    // start expanding the window and deleting those elements found from the set
+    // take the max of current window size and new window size
+    
+    int res = 1;
+    unordered_set<int> num(nums.begin(), nums.end());
+    
+    for(int i = 0; i < nums.size(); i++){
+        if(num.find(nums[i]) == num.end())
+            continue;
+
+        num.erase(nums[i]);
+        int next = nums[i] + 1;
+        int prev = nums[i] - 1;
+        
+        while(num.find(prev) != num.end()) {
+            num.erase(prev);
+            prev--;
+        }
+
+        while(num.find(next) != num.end()){
+            num.erase(next);
+            next++;
+        }
+
+        res = std::max(res, next - prev - 1);
+    }
+    
     return res;
 }
