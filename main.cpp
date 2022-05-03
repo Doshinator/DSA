@@ -38,6 +38,10 @@ int main(){
     Test(49, p->maxArea({1,8,6,2,5,4,8,3,7}));
     Test(1, p->maxArea({1,1}));
 
+    
+    Test(6, p->trap({0,1,0,2,1,0,1,3,2,1,2,1}));
+    Test(9, p->trap({4,2,0,3,2,5}));
+
     Test::printResult();
     return 0;
     
