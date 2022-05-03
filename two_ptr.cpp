@@ -86,3 +86,27 @@ int TWO_PTR::maxArea(vector<int> height){
 
     return maxArea;
 }
+
+
+
+int TWO_PTR::trap(vector<int> height){
+    int water = 0;
+    // Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+    // Output: 6
+    int l = 0, r = height.size() - 1;
+    int maxL = height[l], maxR = height[r];
+
+    while(l < r){
+        if(maxL < maxR){
+            l++;
+            maxL = max(maxL, height[l]);
+            water += maxL - height[l];
+        } else {
+            r--;
+            maxR = max(maxR, height[r]);
+            water += maxR - height[r];
+        }
+    }
+
+    return water;
+}
