@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <unordered_map>
 
 using namespace std;
 
@@ -33,6 +34,26 @@ int SLIDING_WINDOW::lengthOfLongestSubstring(string s){
         str.insert(s[r]);
         r++;
         res = max(res, r - l);
+    }
+    return res;
+}
+
+int SLIDING_WINDOW::characterReplacement(string s, int k){
+    // Input: s = "ABAB", k = 2
+    // Output: 4
+    // Explanation: Replace the two 'A's with two 'B's or vice versa.
+    unordered_map<char,int> count;
+    int l = 0, r = 0, res = 0;
+    int maxf = 0;
+    while(r < s.size()){
+        count[s[r]]++;
+        maxf = std::max(maxf, count[s[r]]); 
+        if((r - l + 1) - maxf > k){
+            count[s[l]]--;
+            l++;
+        }
+        res = std::max(res, (r - l + 1));
+        r++;
     }
     return res;
 }

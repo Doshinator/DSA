@@ -51,6 +51,9 @@ int main(){
     Test(3,s->lengthOfLongestSubstring("abcabcbb"));
     Test(1,s->lengthOfLongestSubstring("bbbbb"));
 
+    Test(4, s->characterReplacement("ABAB", 2));
+    Test(4, s->characterReplacement("AABABBA", 1));
+    
     Test::printResult();
     return 0;
     
