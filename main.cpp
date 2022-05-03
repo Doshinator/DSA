@@ -48,6 +48,9 @@ int main(){
     Test(5, s->maxProfit({7,1,5,3,6,4}));
     Test(0, s->maxProfit({7,6,4,3,1}));
 
+    Test(3,s->lengthOfLongestSubstring("abcabcbb"));
+    Test(1,s->lengthOfLongestSubstring("bbbbb"));
+
     Test::printResult();
     return 0;
     

@@ -8,7 +8,7 @@ using namespace std;
 class SLIDING_WINDOW{
     public:
     int maxProfit(vector<int> prices);
-
+    int lengthOfLongestSubstring(string s);
 };
 
 #endif
