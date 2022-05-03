@@ -1,6 +1,7 @@
 #include "array.h"
 #include "test.h"
 #include "two_ptr.h"
+#include "sliding_window.h"
 #include <iostream>
 
 
@@ -9,6 +10,8 @@ int main(){
 
     ARRAY *a;
     TWO_PTR *p;
+    SLIDING_WINDOW *s;
+
 
     Test(true, a->containsDuplicate({5, 4, 4, 3}));
     Test(false, a->containsDuplicate({5, 1, 4, 3, 2}));
@@ -41,6 +44,9 @@ int main(){
     
     Test(6, p->trap({0,1,0,2,1,0,1,3,2,1,2,1}));
     Test(9, p->trap({4,2,0,3,2,5}));
+
+    Test(5, s->maxProfit({7,1,5,3,6,4}));
+    Test(0, s->maxProfit({7,6,4,3,1}));
 
     Test::printResult();
     return 0;
