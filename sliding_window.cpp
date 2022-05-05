@@ -57,3 +57,36 @@ int SLIDING_WINDOW::characterReplacement(string s, int k){
     }
     return res;
 }
+
+
+bool SLIDING_WINDOW::checkInclusion(string s1, string s2){
+    // Input: s1 = "ab", s2 = "eidbaooo"
+    // Output: true
+    // count freq of char in s1 .. 
+    // make the window of sized s1?
+    // go through s2 by the length of the window size to check for char and it's frequency in m1 - ??
+    // return true if freq matches of m1 == m2 for that window size
+
+    unordered_map<char, int> m;
+    for(int i = 0; i < s1.size(); i++){
+        m[s1[i]]++;
+    }
+    int mapSize = m.size(), lenS1 = s1.size();
+    int l = 0, r = 0;
+    
+    // loop through string 2
+    while(r < s2.size()){
+        // if string 2 char is in map containing the char and their frequency in s1
+        if(m.find(s2[r]) != m.end()){
+            m[s2[r]]--;
+            if(m[s2[r]] == 0)
+                mapSize--;
+        }
+        if(r - l + 1 < lenS1)
+            r++;
+        // need to understand and finish the rest
+    
+
+    }
+    return false;
+}
