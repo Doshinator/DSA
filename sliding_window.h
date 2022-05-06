@@ -10,6 +10,7 @@ class SLIDING_WINDOW{
     int maxProfit(vector<int> prices);
     int lengthOfLongestSubstring(string s);
     int characterReplacement(string s, int k);
+    vector<int> maxSlidingWindow(vector<int> nums, int k);
 };
 
 #endif

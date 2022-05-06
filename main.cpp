@@ -54,6 +54,9 @@ int main(){
     Test(4, s->characterReplacement("ABAB", 2));
     Test(4, s->characterReplacement("AABABBA", 1));
     
+    Test({3,3,5,5,6,7}, s->maxSlidingWindow({1,3,-1,-3,5,3,6,7}, 3));
+    Test({1}, s->maxSlidingWindow({1}, 1));
+
     Test::printResult();
     return 0;
     
