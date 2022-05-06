@@ -3,6 +3,8 @@
 #include <string>
 #include <set>
 #include <unordered_map>
+#include <deque>
+#include <iostream>
 
 using namespace std;
 
@@ -55,5 +57,38 @@ int SLIDING_WINDOW::characterReplacement(string s, int k){
         res = std::max(res, (r - l + 1));
         r++;
     }
+    return res;
+}
+
+
+
+vector<int> SLIDING_WINDOW::maxSlidingWindow(vector<int> nums, int k){
+    // Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+    // Output: [3,3,5,5,6,7]
+    //      0, 1, 2,  3,  4, 5, 6, 7
+    //      1, 3, -1, -3, 5, 3, 6, 7
+    //         l       r             
+    // q : 3 -1 3
+    // res : 3 3 5 5 6 7
+    vector<int> res;
+    deque<int> q;
+    int l = 0, r = 0;
+
+    while(r < nums.size()){
+        while(!q.empty() && nums[q.back()] < nums[r])
+            q.pop_back();
+
+        q.push_back(r);
+
+        if(l > q.front())
+            q.pop_front();
+
+        if(r - l + 1 == k){
+            res.push_back(nums[q.front()]);
+            l++;
+        }
+        r++;
+    }
+
     return res;
 }
