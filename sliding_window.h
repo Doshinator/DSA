@@ -11,6 +11,7 @@ class SLIDING_WINDOW{
     int lengthOfLongestSubstring(string s);
     int characterReplacement(string s, int k);
     vector<int> maxSlidingWindow(vector<int> nums, int k);
+    string minWindow(string s, string t);
 };
 
 #endif

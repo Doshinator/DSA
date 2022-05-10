@@ -92,3 +92,52 @@ vector<int> SLIDING_WINDOW::maxSlidingWindow(vector<int> nums, int k){
 
     return res;
 }
+
+
+
+string minWindow(string s, string t){
+    // Input: s = "ADOBECODEBANC", t = "ABC"
+    // Output: "BANC"
+    
+
+    // min window len = min(min window len, window start - window end)
+    // start of window = first char in string s that is in t 
+    // keep iteraitng until used up all char from string t
+    // end of window = last char used in string t 
+    // calculate the window len
+    // start next window - begin at the ending of last window point
+    // stop at last char
+
+    int l = 0, r = 0;
+    string res;
+    int minString = INT_MAX;
+    unordered_map<char, int> m;
+    unordered_map<char, int> m2;
+    for(int i = 0 ; i < t.size(); i++){
+        m[t[i]]++;
+        m2[t[i]]++;
+    }
+
+    while(r < s.size()){
+        if(m.find(s[r]) != m.end()){
+            l = r;
+            string str;
+            while(!m.empty()){
+                m[s[r]]--;
+                str.push_back(s[r]);
+                if(m[s[r]] == 0){
+                    m.erase(s[r]);
+                }
+                r++;     
+            }
+
+            if(str.size() < minString)
+                res = str;
+            l = r;
+            m = m2;
+        }
+       
+    }
+
+    return res;
+}
