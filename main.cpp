@@ -2,6 +2,7 @@
 #include "test.h"
 #include "two_ptr.h"
 #include "sliding_window.h"
+#include "stack.h"
 #include <iostream>
 
 
