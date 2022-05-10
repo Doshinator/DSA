@@ -12,6 +12,7 @@ int main(){
     ARRAY *a;
     TWO_PTR *p;
     SLIDING_WINDOW *s;
+    STACK *stk;
 
 
     Test(true, a->containsDuplicate({5, 4, 4, 3}));
@@ -57,6 +58,9 @@ int main(){
     
     Test({3,3,5,5,6,7}, s->maxSlidingWindow({1,3,-1,-3,5,3,6,7}, 3));
     Test({1}, s->maxSlidingWindow({1}, 1));
+
+    Test(true, stk->isValid("()[]{}"));
+    Test(false, stk->isValid("(}"));
 
     Test::printResult();
     return 0;
