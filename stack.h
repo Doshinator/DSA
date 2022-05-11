@@ -10,7 +10,10 @@ using namespace std;
 class STACK{
     public:
     bool isValid(string s);
-
+    void push(int val);
+    void pop();
+    int top();
+    int getMin();
 };
 
 
