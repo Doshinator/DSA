@@ -62,6 +62,27 @@ int main(){
     Test(true, stk->isValid("()[]{}"));
     Test(false, stk->isValid("(}"));
 
+    /* min stack */
+    MinStack *minStack;
+    minStack->push(5);
+    Test(5, minStack->top());
+    // Test(5, minStack->getMin());
+
+    // minStack->push(-2);
+    // Test(-2, minStack->top());
+    // Test(-2, minStack->getMin());
+
+    // minStack->push(-3);
+    // Test(-3, minStack->top());
+    // Test(-3, minStack->getMin());
+
+    // minStack->push(-20);
+    // Test(-20, minStack->top());
+    // Test(-20, minStack->getMin());
+
+  
+
+
     Test::printResult();
     return 0;
     
