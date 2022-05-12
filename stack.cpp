@@ -23,3 +23,23 @@ bool STACK::isValid(string s){
     // stack should be empty - true : valid paren , else false ; invalid paren
     return stk.empty();
 }
+
+void MinStack::push(int val){
+    if(s.empty())
+        s.push_back({val,val});
+    else 
+        s.back().second < val? s.push_back({val, s.back().second}) : s.push_back({val, val});
+}
+
+void MinStack::pop(){
+    if(!s.empty())
+        s.pop_back();
+}
+
+int MinStack::top(){
+    return s.back().first;
+}
+
+int MinStack::getMin(){
+    return s.back().second;
+}
