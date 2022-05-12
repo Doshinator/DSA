@@ -10,6 +10,7 @@ using namespace std;
 class STACK{
     public:
     bool isValid(string s);
+    int evalRPN(vector<string> tokens);
 };
 
 class MinStack{

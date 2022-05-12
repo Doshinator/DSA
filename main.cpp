@@ -11,7 +11,7 @@ int main(){
 
     ARRAY *a;
     TWO_PTR *p;
-    SLIDING_WINDOW *s;
+    SLIDING_WINDOW *sw;
     STACK *stk;
 
 
@@ -47,25 +47,25 @@ int main(){
     Test(6, p->trap({0,1,0,2,1,0,1,3,2,1,2,1}));
     Test(9, p->trap({4,2,0,3,2,5}));
 
-    Test(5, s->maxProfit({7,1,5,3,6,4}));
-    Test(0, s->maxProfit({7,6,4,3,1}));
+    Test(5, sw->maxProfit({7,1,5,3,6,4}));
+    Test(0, sw->maxProfit({7,6,4,3,1}));
 
-    Test(3,s->lengthOfLongestSubstring("abcabcbb"));
-    Test(1,s->lengthOfLongestSubstring("bbbbb"));
+    Test(3,sw->lengthOfLongestSubstring("abcabcbb"));
+    Test(1,sw->lengthOfLongestSubstring("bbbbb"));
 
-    Test(4, s->characterReplacement("ABAB", 2));
-    Test(4, s->characterReplacement("AABABBA", 1));
+    Test(4, sw->characterReplacement("ABAB", 2));
+    Test(4, sw->characterReplacement("AABABBA", 1));
     
-    Test({3,3,5,5,6,7}, s->maxSlidingWindow({1,3,-1,-3,5,3,6,7}, 3));
-    Test({1}, s->maxSlidingWindow({1}, 1));
+    Test({3,3,5,5,6,7}, sw->maxSlidingWindow({1,3,-1,-3,5,3,6,7}, 3));
+    Test({1}, sw->maxSlidingWindow({1}, 1));
 
     Test(true, stk->isValid("()[]{}"));
     Test(false, stk->isValid("(}"));
 
     /* min stack */
-    MinStack *minStack;
-    minStack->push(5);
-    Test(5, minStack->top());
+    // MinStack *minStack;
+    // minStack->push(5);
+    // Test(5, minStack->top());
     // Test(5, minStack->getMin());
 
     // minStack->push(-2);
@@ -80,8 +80,9 @@ int main(){
     // Test(-20, minStack->top());
     // Test(-20, minStack->getMin());
 
-  
-
+    Test(9, stk->evalRPN({"2","1","+","3","*"}));
+    Test(6, stk->evalRPN({"4","13","5","/","+"}));
+    Test(2, stk->evalRPN({"13","5","/"}));
 
     Test::printResult();
     return 0;
