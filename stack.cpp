@@ -74,3 +74,21 @@ int STACK::evalRPN(vector<string> tokens){
     }
     return s.top();
 }
+
+
+vector<string> STACK::generateParenthesis(int n){
+    // Input: n = 3
+    // Output: ["((()))","(()())","(())()","()(())","()()()"]
+    vector<string> res;
+    std::stack<char> stack;
+    //     (
+    //    / \
+    //   ((  ()
+    //   / \
+    // ((( (()
+    
+
+
+
+    return res;
+}
