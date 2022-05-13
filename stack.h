@@ -12,6 +12,7 @@ class STACK{
     bool isValid(string s);
     int evalRPN(vector<string> tokens);
     vector<string> generateParenthesis(int n);
+    vector<int> dailyTemperatures(vector<int> temperatures);
 };
 
 class MinStack{
