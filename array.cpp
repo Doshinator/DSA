@@ -231,3 +231,25 @@ int ARRAY::longestConsecutive(vector<int> nums){
     
     return res;
 }
+
+
+int ARRAY::countPrime(int n){
+    // 10 -> 4 : 2, 3, 5, 7
+    vector<bool> isPrime(n, false);
+    isPrime[0] = true;
+    isPrime[1] = true;
+    for(int i = 0; i < sqrt(n); i++){
+        if(!isPrime[i]){
+            for(int j = i * i; j < n; j += i){
+                isPrime[j] = true;
+            }
+        }
+    }
+    // int res = 0;
+    // for(int i = 0; i < isPrime.size(); i++){
+    //     if(!isPrime[i]) 
+    //         res += 1;
+    // }
+    // return res;
+    return count(isPrime.begin(), isPrime.end(), false);
+}
