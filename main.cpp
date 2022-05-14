@@ -84,6 +84,9 @@ int main(){
     Test(6, stk->evalRPN({"4","13","5","/","+"}));
     Test(2, stk->evalRPN({"13","5","/"}));
 
+    Test({"((()))","(()())","(())()","()(())","()()()"}, stk->generateParenthesis(3));
+    Test({"()"}, stk->generateParenthesis(1));
+
     Test::printResult();
     return 0;
     
