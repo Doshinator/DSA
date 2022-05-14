@@ -75,20 +75,33 @@ int STACK::evalRPN(vector<string> tokens){
     return s.top();
 }
 
+void backtrackingParenthesis(int close, int open, string &str, vector<string> &res){
+    if(close == 0 && open == 0){
+        res.push_back(str);
+        return;
+    }
+    if(close > 0){
+        str.append("(");
+        backtrackingParenthesis(close - 1, open, str, res);
+        str.pop_back();
+    }
+    if(close < open){
+        str.append(")");
+        backtrackingParenthesis(close, open - 1, str, res);
+        str.pop_back();
+    }
+}
 
 vector<string> STACK::generateParenthesis(int n){
     // Input: n = 3
     // Output: ["((()))","(()())","(())()","()(())","()()()"]
     vector<string> res;
-    std::stack<char> stack;
-    //     (
-    //    / \
-    //   ((  ()
-    //   / \
-    // ((( (()
-    
-
-
-
+    std::stack<string> stack;
+    string s = "";
+    // ("", 3, 3)
+    // ("(", 2, 3) 
+    // ("((", 1, 3) or ("()", 2, 2)
+    // etc..
+    backtrackingParenthesis(n, n, s, res);
     return res;
 }
