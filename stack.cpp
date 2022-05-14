@@ -2,6 +2,8 @@
 #include <string>
 #include <stack>
 #include <unordered_map>
+#include <iostream>
+
 using namespace std;
 
 bool STACK::isValid(string s){
@@ -108,8 +110,16 @@ vector<string> STACK::generateParenthesis(int n){
 
 vector<int> STACK::dailyTemperatures(vector<int> temperatures){
     // Input: temperatures = [73,74,75,71,69,72,76,73]
-    // Output: [1,1,4,2,1,1,0,0]    
-    
+    // Output: [1,1,4,2,1,1,0,0]
+    vector<int> res(temperatures.size(), 0);
+    std::stack<pair<int,int>> stack;
 
-
+    for(int i = 0; i < temperatures.size(); ++i){
+        while(!stack.empty() && temperatures[i] > stack.top().first){
+            res[stack.top().second] = i - stack.top().second;
+            stack.pop();
+        }
+        stack.push({temperatures[i], i});
+    }
+    return res;
 }
