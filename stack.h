@@ -11,6 +11,7 @@ class STACK{
     public:
     bool isValid(string s);
     int evalRPN(vector<string> tokens);
+    vector<string> generateParenthesis(int n);
 };
 
 class MinStack{

@@ -19,6 +19,7 @@ class ARRAY{
     string encode(vector<string> strs);
     vector<string> decode(string str);
     int longestConsecutive(vector<int> nums);
+    int countPrime(int n);
 };
 
 
