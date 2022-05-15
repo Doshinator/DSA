@@ -95,6 +95,8 @@ int main(){
 
     Test(3, stk->carFleet(12, {10,8,0,5,3}, {2,4,1,1,3}));
     Test(1, stk->carFleet(100, {0, 2, 4}, {4, 2, 1}));
+    Test(4, stk->carFleet(17, {8,12,16,11,7}, {6,9,10,9,7}));
+    
 
     Test::printResult();
     return 0;
