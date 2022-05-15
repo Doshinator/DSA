@@ -138,11 +138,11 @@ int STACK::carFleet(int target, vector<int> position, vector<int> speed){
     sort(cars.begin(), cars.end());
 
     int fleet = 0;
-    double minTime= cars[cars.size() - 1].second;
+    double latest_arrival_time = cars[cars.size() - 1].second;
     for(int i = cars.size() - 2; i >= 0; i--){
-        if(cars[i].second > minTime){
+        if(cars[i].second > latest_arrival_time){
             fleet++;
-            minTime = cars[i].second;
+            latest_arrival_time = cars[i].second;
         }
     }
     return fleet + 1; // + 1 becuase of the initial car as a fleet
