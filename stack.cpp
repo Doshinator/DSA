@@ -132,20 +132,18 @@ int STACK::carFleet(int target, vector<int> position, vector<int> speed){
     vector<pair<int,double>> cars(position.size());
     for(int i = 0; i < position.size(); i++){
         cars[i].first = position[i];
-        cars[i].second = double(target - position[i]) / (double)(speed[i]);
+        cars[i].second = (double)(target - position[i]) / (double)(speed[i]);
     }
 
     sort(cars.begin(), cars.end());
 
-    int res = 0;
-    int min = cars[cars.size() - 1].second;
+    int fleet = 0;
+    double minTime= cars[cars.size() - 1].second;
     for(int i = cars.size() - 2; i >= 0; i--){
-        if(cars[i].second > min){
-            res++;
-            min = cars[i].second;
+        if(cars[i].second > minTime){
+            fleet++;
+            minTime = cars[i].second;
         }
     }
-
-
-    return res + 1; // + 1 becuase of the initial car as a fleet
+    return fleet + 1; // + 1 becuase of the initial car as a fleet
 }
