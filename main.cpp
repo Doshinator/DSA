@@ -93,6 +93,9 @@ int main(){
     Test({1,1,4,2,1,1,0,0}, stk->dailyTemperatures({73,74,75,71,69,72,76,73}));
     Test({1,1,1,0}, stk->dailyTemperatures({30,40,50,60}));
 
+    Test(3, stk->carFleet(12, {10,8,0,5,3}, {2,4,1,1,3}));
+    Test(1, stk->carFleet(100, {0, 2, 4}, {4, 2, 1}));
+
     Test::printResult();
     return 0;
     

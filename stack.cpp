@@ -123,3 +123,29 @@ vector<int> STACK::dailyTemperatures(vector<int> temperatures){
     }
     return res;
 }
+
+
+int STACK::carFleet(int target, vector<int> position, vector<int> speed){
+    // Input: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]
+    // Output: 3
+    // 10 - 2 ; 8 - 4
+    vector<pair<int,double>> cars(position.size());
+    for(int i = 0; i < position.size(); i++){
+        cars[i].first = position[i];
+        cars[i].second = double(target - position[i]) / (double)(speed[i]);
+    }
+
+    sort(cars.begin(), cars.end());
+
+    int res = 0;
+    int min = cars[cars.size() - 1].second;
+    for(int i = cars.size() - 2; i >= 0; i--){
+        if(cars[i].second > min){
+            res++;
+            min = cars[i].second;
+        }
+    }
+
+
+    return res + 1; // + 1 becuase of the initial car as a fleet
+}
