@@ -1,8 +1,9 @@
-#include "array.h"
 #include "test.h"
+#include "array.h"
 #include "two_ptr.h"
 #include "sliding_window.h"
 #include "stack.h"
+#include "binary_search.h"
 #include <iostream>
 
 
@@ -13,6 +14,7 @@ int main(){
     TWO_PTR *p;
     SLIDING_WINDOW *sw;
     STACK *stk;
+    BINARY_SEARCH *bin_search;
 
 
     Test(true, a->containsDuplicate({5, 4, 4, 3}));
@@ -101,6 +103,8 @@ int main(){
     Test(2, stk->largestRectangleArea({1,1}));
     Test(10, stk->largestRectangleArea({5,6}));
     
+    Test(4, bin_search->search({-1,0,3,5,9,12}, 9));
+    Test(-1, bin_search->search({-1,0,3,5,9,12}, 2));
 
     Test::printResult();
     return 0;
