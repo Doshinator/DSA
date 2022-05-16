@@ -147,3 +147,31 @@ int STACK::carFleet(int target, vector<int> position, vector<int> speed){
     }
     return fleet + 1; // + 1 becuase of the initial car as a fleet
 }
+
+
+int STACK::largestRectangleArea(vector<int> heights){
+    // Input: heights = [2,1,5,6,2,3] 
+    // Output: 10
+    int largestArea = INT_MIN;
+    std::stack<pair<int,int>> stack;
+    int starting_index = 0; 
+
+    for(int i = 0; i < heights.size(); i++){
+        starting_index = i;
+        while(!stack.empty() && heights[i] < stack.top().first){
+            largestArea = max(largestArea, (stack.top().first * (i - stack.top().second)));
+            starting_index = stack.top().second;    
+            stack.pop();
+        }
+        stack.push({heights[i], starting_index});
+    }
+
+    int stackSize = stack.size();
+
+    while(!stack.empty()){
+        largestArea = max(largestArea, (stack.top().first * ((int)heights.size() - stack.top().second)));
+        stack.pop();
+    }
+    
+    return largestArea;
+}

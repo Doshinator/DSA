@@ -14,7 +14,7 @@ class STACK{
     vector<string> generateParenthesis(int n);
     vector<int> dailyTemperatures(vector<int> temperatures);
     int carFleet(int target, vector<int> position, vector<int> speed);
-
+    int largestRectangleArea(vector<int> heights);
 };
 
 class MinStack{

@@ -96,6 +96,10 @@ int main(){
     Test(3, stk->carFleet(12, {10,8,0,5,3}, {2,4,1,1,3}));
     Test(1, stk->carFleet(100, {0, 2, 4}, {4, 2, 1}));
     Test(4, stk->carFleet(17, {8,12,16,11,7}, {6,9,10,9,7}));
+
+    Test(10, stk->largestRectangleArea({2,1,5,6,2,3}));
+    Test(2, stk->largestRectangleArea({1,1}));
+    Test(10, stk->largestRectangleArea({5,6}));
     
 
     Test::printResult();
