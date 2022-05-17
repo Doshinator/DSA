@@ -106,6 +106,11 @@ int main(){
     Test(4, bin_search->search({-1,0,3,5,9,12}, 9));
     Test(-1, bin_search->search({-1,0,3,5,9,12}, 2));
 
+    Test(1, bin_search->searchMatrix({{1,3,5,7},{10,11,16,20},{23,30,34,60}}, 3));
+    Test(0, bin_search->searchMatrix({{1,3,5,7},{10,11,16,20},{23,30,34,60}}, 13));
+    Test(1, bin_search->searchMatrix({{1}}, 1));
+    Test(1, bin_search->searchMatrix({{1,3}}, 3));
+
     Test::printResult();
     return 0;
     
