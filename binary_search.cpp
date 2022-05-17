@@ -58,3 +58,9 @@ bool BINARY_SEARCH::searchMatrix(vector<vector<int>> matrix, int target){
     return false;
     
 }
+
+
+int BINARY_SEARCH::minEatingSpeed(vector<int> piles, int h){
+
+    return -1;
+}
