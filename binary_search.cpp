@@ -33,7 +33,7 @@ bool BINARY_SEARCH::searchMatrix(vector<vector<int>> matrix, int target){
 
     while(top <= bottom){
         r = top + (bottom - top) / 2;
-        if(matrix[r][matrix[0].size() - 1] <= target){
+        if(matrix[r][0] <= target){
             top = r + 1;
         } else if(matrix[r][0] > target){
             bottom = r - 1;
