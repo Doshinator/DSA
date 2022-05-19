@@ -10,6 +10,7 @@ class BINARY_SEARCH{
     int search(vector<int> nums, int target);
     bool searchMatrix(vector<vector<int>> matrix, int target);
     int minEatingSpeed(vector<int> piles, int h);
+    int searchRotatedArray(vector<int> nums, int target);
 };
 
 
