@@ -1,6 +1,8 @@
 #include "binary_search.h"
 #include <vector>
 #include <iostream>
+#include <math.h>
+#include <iostream>
 
 using namespace std;
 
@@ -57,4 +59,49 @@ bool BINARY_SEARCH::searchMatrix(vector<vector<int>> matrix, int target){
 
     return false;
     
+}
+
+
+int BINARY_SEARCH::minEatingSpeed(vector<int> piles, int h){
+    // Input: piles = [3,6,7,11], h = 8
+    // Output: k = 4 bananaes koko can finish eating all the bananas from all the piles
+    // hr[1, 2, 2, 3] = 8
+    // 3 / can k be ?2.. 3.. <- 4 -> 5.. 6..
+    // k = 1 will take 27hr , max hr we have is 8
+    // k = 2 will take 15hr, max hr we have is 8
+    // up to max k can be is 11, which means 11 bananaes can be cunsumed in an hour and it will take 4 hours to consume all 4 piles
+   
+    /*
+        Logic..
+
+        eating more bananas-hour, k, will lessen the hour it takes to finish all bananas
+        eating less bananas-hour, k, will up the hours it takes to finish all bananas
+        goal : eat less bananas-hour while keeping close to h
+        so... if we have low k, resulting in high hours, bin search for other k values to the right of k 
+        if we have a very high k, resulting in low hours, bin search left of k to find a potential new min k, keep track of current min
+     
+     */
+
+    sort(piles.begin(), piles.end());
+    int hours = 0;
+    int l = 1, r = piles[piles.size() - 1]; // from k = 1 to k = max in piles to eat / hr
+    double res = INT_MAX;
+    
+    while(l <= r){
+        double k = l + (r - l) / 2;
+        hours = 0;
+        for(int i = 0; i < piles.size(); i++){
+            cout << piles[i] << " / " << k << " =  " << ceil((double)piles[i]/k) << " | ";
+            hours = ceil(piles[i] / k) + hours;
+        }
+        cout << "total hours : "<< hours << endl;
+        if(hours <= h){
+            r = k - 1;
+            res = min(res, k);
+            cout << "current res = " << res << endl;
+        } else {
+            l = k + 1;
+        }
+    }
+    return res;
 }
