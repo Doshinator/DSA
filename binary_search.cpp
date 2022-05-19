@@ -91,17 +91,41 @@ int BINARY_SEARCH::minEatingSpeed(vector<int> piles, int h){
         double k = l + (r - l) / 2;
         hours = 0;
         for(int i = 0; i < piles.size(); i++){
-            cout << piles[i] << " / " << k << " =  " << ceil((double)piles[i]/k) << " | ";
             hours = ceil(piles[i] / k) + hours;
         }
-        cout << "total hours : "<< hours << endl;
         if(hours <= h){
             r = k - 1;
             res = min(res, k);
-            cout << "current res = " << res << endl;
         } else {
             l = k + 1;
         }
     }
     return res;
+}
+
+
+int BINARY_SEARCH::searchRotatedArray(vector<int> nums, int target){
+    // Input: nums = [4,5,6,7,0,1,2], target = 0
+    // Output: 4
+    int l = 0, r = nums.size() - 1;
+    int mid;
+    while(l <= r){
+        mid = l + (r - l) / 2;
+        if(nums[mid] == target) return mid;
+        
+        if(nums[mid] >= nums[l]){
+            if(target <= nums[mid] && target >= nums[l])
+                r = mid - 1;
+            else 
+                l = mid + 1;
+        } else {
+            if(target >= nums[mid] && target <= nums[r])
+                l = mid + 1;
+            else
+                r = mid - 1;
+        }
+
+    }
+
+    return -1;
 }

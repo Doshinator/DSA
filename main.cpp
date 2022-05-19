@@ -115,6 +115,12 @@ int main(){
     Test(30, bin_search->minEatingSpeed({30,11,23,4,20}, 5));
     Test(23, bin_search->minEatingSpeed({30,11,23,4,20}, 6));
 
+    Test(4, bin_search->searchRotatedArray({4,5,6,7,0,1,2}, 0));
+    Test(-1, bin_search->searchRotatedArray({4,5,6,7,0,1,2}, 3));
+    Test(1, bin_search->searchRotatedArray({3,1}, 1));
+    Test(5, bin_search->searchRotatedArray({4,5,6,7,0,1,2}, 1));
+    
+
     Test::printResult();
     return 0;
     
