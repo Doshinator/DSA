@@ -111,6 +111,10 @@ int main(){
     Test(1, bin_search->searchMatrix({{1}}, 1));
     Test(1, bin_search->searchMatrix({{1,3}}, 3));
 
+    Test(4, bin_search->minEatingSpeed({3, 6, 7, 11}, 8));
+    Test(30, bin_search->minEatingSpeed({30,11,23,4,20}, 5));
+    Test(23, bin_search->minEatingSpeed({30,11,23,4,20}, 6));
+
     Test::printResult();
     return 0;
     
