@@ -65,7 +65,8 @@
         "tuple": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "__functional_03": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

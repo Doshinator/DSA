@@ -119,6 +119,14 @@ int main(){
     Test(-1, bin_search->searchRotatedArray({4,5,6,7,0,1,2}, 3));
     Test(1, bin_search->searchRotatedArray({3,1}, 1));
     Test(5, bin_search->searchRotatedArray({4,5,6,7,0,1,2}, 1));
+
+    TimeMap *T = new TimeMap();
+    T->set("foo", "bar", 1);
+    T->set("foo", "bar2", 4);
+
+    Test("bar", T->get("foo", 3));
+    Test("bar2", T->get("foo", 6));
+
     
 
     Test::printResult();
