@@ -13,6 +13,7 @@ class BINARY_SEARCH{
     bool searchMatrix(vector<vector<int>> matrix, int target);
     int minEatingSpeed(vector<int> piles, int h);
     int searchRotatedArray(vector<int> nums, int target);
+    double findMedianSortedArrays(vector<int> nums1, vector<int> nums2);
 };
 
 class TimeMap{
