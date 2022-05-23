@@ -12,6 +12,8 @@ struct ListNode{
 class LINKED_LIST{
     public:
     ListNode* reverseList(ListNode* head);
+    void reorderList(ListNode* head);
+    ListNode* midNode(ListNode* head);
 };
 
 
