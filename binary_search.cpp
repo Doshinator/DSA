@@ -178,3 +178,12 @@ string TimeMap::get(string key, int timestamp){
     }
     return r >= 0? m[key][r].second : "";
 }
+
+double findMedianSortedArrays(vector<int> nums1, vector<int> nums2){
+    // Input: nums1 = [1,2], nums2 = [3,4]
+    // Output: 2.50000
+    double res;
+    
+
+    return res;
+}
