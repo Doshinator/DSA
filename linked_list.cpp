@@ -129,3 +129,21 @@ bool LINKED_LIST::hasCycle(ListNode *head){
     }
     return false;
 }
+
+ListNode* LINKED_LIST::deleteDuplicates(ListNode* head){
+    // 1, 1, 2
+    // 1, 2
+
+    ListNode* node = head;
+    
+    while(node && node->next){
+        if(node->val == node->next->val){
+            ListNode* temp = node->next;
+            node->next = node->next->next;
+            delete(temp);
+        } else {
+            node = node->next;
+        }
+    }
+    return head;
+}
