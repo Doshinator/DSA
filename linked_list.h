@@ -16,6 +16,7 @@ class LINKED_LIST{
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2);
     void reorderList(ListNode* head);
     ListNode* midNode(ListNode* head);
+    ListNode* removeNthFromEnd(ListNode* head, int n);
 };
 
 
