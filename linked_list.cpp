@@ -71,3 +71,27 @@ void LINKED_LIST::reorderList(ListNode* head){
         i ^= 1;
     }
 }
+
+
+ListNode* LINKED_LIST::removeNthFromEnd(ListNode* head, int n){
+    // Input: head = [1,2,3,4,5], n = 2
+    // Output: [1,2,3,5]
+
+    ListNode* fast = head;
+    ListNode* slow = head;
+
+    for(int i = 0; i < n; i++){
+        fast = fast->next;
+    }
+
+    while(fast->next != nullptr){
+        slow = slow->next;
+        fast = fast->next;
+    }
+
+    ListNode* temp = slow->next;
+    slow->next = slow->next->next;
+    delete(temp);
+
+    return head;
+}
