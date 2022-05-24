@@ -19,6 +19,7 @@ class LINKED_LIST{
     ListNode* removeNthFromEnd(ListNode* head, int n);
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
     bool hasCycle(ListNode *head);
+    ListNode* deleteDuplicates(ListNode* head);
 };
 
 
