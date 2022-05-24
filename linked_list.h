@@ -17,6 +17,7 @@ class LINKED_LIST{
     void reorderList(ListNode* head);
     ListNode* midNode(ListNode* head);
     ListNode* removeNthFromEnd(ListNode* head, int n);
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
 };
 
 
