@@ -14,6 +14,8 @@ class LINKED_LIST{
     public:
     ListNode* reverseList(ListNode* head);
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2);
+    void reorderList(ListNode* head);
+    ListNode* midNode(ListNode* head);
 };
 
 
