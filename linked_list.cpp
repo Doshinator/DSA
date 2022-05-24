@@ -131,8 +131,8 @@ bool LINKED_LIST::hasCycle(ListNode *head){
 }
 
 ListNode* LINKED_LIST::deleteDuplicates(ListNode* head){
-    // 1, 1, 2
-    // 1, 2
+    // input = [1, 1, 2]
+    // output = [1, 2]
 
     ListNode* node = head;
     
