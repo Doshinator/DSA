@@ -117,3 +117,15 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2){
     
     return sum->next;
 }
+
+bool LINKED_LIST::hasCycle(ListNode *head){
+    ListNode* slow = head;
+    ListNode* fast = head;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast)
+            return true;
+    }
+    return false;
+}
