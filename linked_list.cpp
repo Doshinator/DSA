@@ -69,4 +69,5 @@ void LINKED_LIST::reorderList(ListNode* head){
         }
             head = head->next;
         i ^= 1;
+    }
 }
