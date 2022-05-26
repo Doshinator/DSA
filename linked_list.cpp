@@ -1,5 +1,8 @@
 #include "linked_list.h"
 
+#include <unordered_map>
+using namespace std;
+
 ListNode* LINKED_LIST::reverseList(ListNode* head){
     ListNode* curr = head;
     ListNode* next = nullptr, *prev = nullptr;
@@ -147,3 +150,45 @@ ListNode* LINKED_LIST::deleteDuplicates(ListNode* head){
     }
     return head;
 }
+
+
+int LRUCache::get(int key){
+    if(m.find(key) == m.end())
+        return -1;
+    // map<int, list<pair<int,int>>::iterator>
+    // have to re arrange list such that key gotten is now in front of the list (most recently used)
+    list<pair<int,int>>::iterator it = m[key];
+    l.splice(l.begin(), l, it);
+    
+    return it->second;
+}
+
+/*
+
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+
+*/
+
+
+void LRUCache::put(int key, int value){
+    // if key's in the map, this will be most recently used and value needs to be updated for that key
+    if(m.find(key) != m.end()){
+        l.splice(l.begin(), l, m[key]);
+        m[key]->second = value;
+        return;
+    }
+
+    // evict least recent (back of list) and delete from map
+    if(m.size() == capacity){
+        m.erase(l.back().first);
+        l.pop_back();
+    }
+
+    // default case to just push key value front
+    l.push_front(make_pair(key, value));
+    m[key] = l.begin();
+}  

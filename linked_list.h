@@ -1,6 +1,10 @@
 #ifndef LINKED_LIST_H_
 #define LINKED_LIST_H_
 
+#include <unordered_map>
+#include <list>
+
+using namespace std;
 
 struct ListNode{
     int val;
@@ -22,6 +26,16 @@ class LINKED_LIST{
     ListNode* deleteDuplicates(ListNode* head);
 };
 
+class LRUCache{
+    public:
+    LRUCache(int capacity) : capacity(capacity) {}
+    int get(int key);
+    void put(int key, int value);
+    private:
+    const int capacity;
+    list<std::pair<int,int>> l;
+    unordered_map<int, list<pair<int,int>>::iterator> m;
+};
 
 
 #endif
