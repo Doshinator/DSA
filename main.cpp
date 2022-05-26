@@ -4,6 +4,7 @@
 #include "sliding_window.h"
 #include "stack.h"
 #include "binary_search.h"
+#include "linked_list.h"
 #include <iostream>
 
 
@@ -127,6 +128,21 @@ int main(){
     Test("bar", T->get("foo", 3));
     Test("bar2", T->get("foo", 6));
 
+    // ---- LRU ----
+    LRUCache *lru = new LRUCache(2);
+
+    lru->put(1, 1);
+    lru->put(2, 2);
+
+    Test(1, lru->get(1));
+
+    lru->put(3, 3);
+    Test(-1, lru->get(2));
+    
+    lru->put(4, 4);
+    Test(-1, lru->get(1));
+    Test(3, lru->get(3));
+    Test(4, lru->get(4));
     
 
     Test::printResult();
