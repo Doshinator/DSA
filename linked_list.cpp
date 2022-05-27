@@ -1,6 +1,7 @@
 #include "linked_list.h"
 
 #include <unordered_map>
+#include <vector>
 using namespace std;
 
 ListNode* LINKED_LIST::reverseList(ListNode* head){
@@ -152,16 +153,6 @@ ListNode* LINKED_LIST::deleteDuplicates(ListNode* head){
 }
 
 
-int LRUCache::get(int key){
-    if(m.find(key) == m.end())
-        return -1;
-    // map<int, list<pair<int,int>>::iterator>
-    // have to re arrange list such that key gotten is now in front of the list (most recently used)
-    list<pair<int,int>>::iterator it = m[key];
-    l.splice(l.begin(), l, it);
-    
-    return it->second;
-}
 
 /*
 
@@ -172,7 +163,16 @@ lRUCache.get(1);    // return 1
 lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
 
 */
-
+int LRUCache::get(int key){
+    if(m.find(key) == m.end())
+        return -1;
+    // map<int, list<pair<int,int>>::iterator>
+    // have to re arrange list such that key gotten is now in front of the list (most recently used)
+    list<pair<int,int>>::iterator it = m[key];
+    l.splice(l.begin(), l, it);
+    
+    return it->second;
+}
 
 void LRUCache::put(int key, int value){
     // if key's in the map, this will be most recently used and value needs to be updated for that key
@@ -192,3 +192,56 @@ void LRUCache::put(int key, int value){
     l.push_front(make_pair(key, value));
     m[key] = l.begin();
 }  
+
+
+ListNode* LINKED_LIST::mergeKLists(vector<ListNode*> lists){
+    /*
+        Input: lists = [[1,4,5],[1,3,4],[2,6]]
+        Output: [1,1,2,3,4,4,5,6]
+        Explanation: The linked-lists are:
+        [
+        1->4->5,
+        1->3->4,
+        2->6
+        ]
+    */
+
+    // vector [1, 1, 2] -> 0th index / node can be moved 
+    //        [4, 1, 2] -> 1st index / node can be moved
+    //        [4, 3, 2] -> 2nd index / node can be moved
+    //        [4, 3, 6] -> 1st index / node can be moved
+    //        [4, 4, 6] -> 0th index / node can be moved
+    //        [5, 4, 6] -> 1st index / node can be moved
+    //        [5, null, 6] -> 0th index node can be moved
+    //        [null, null, 6] -> 2nd index node can be moved
+    //        [null, null, null] -> finish
+    // resulting appended list 1->1->2->3->4->4->5->6
+
+    vector<int> bucket(lists.size(), 0);
+    vector<vector<int>> v(lists.size());
+    for(int i = 0; i < lists.size(); i++){
+        while(lists[i] != nullptr){
+            v[i].push_back(lists[i]->val);
+            lists[i] = lists[i]->next;
+        }
+    }
+
+    vector<int> res;
+    
+    pair<int, int> p;
+    int min = INT_MAX;
+    for(int i = 0; i < v.size(); i++){
+        for(int j = 0; j < v.size(); j++){
+            if(v[j][bucket[j]] < min && bucket[j] < v[j].size()){
+                min = v[j][bucket[j]];
+                p = {j, min};
+            }
+        }
+        bucket[p.first] += 1;
+        res.push_back(p.second);
+        min = INT_MAX;
+    }
+    
+
+    return nullptr;
+}
