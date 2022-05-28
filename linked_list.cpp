@@ -256,13 +256,21 @@ ListNode* reverseKGroup(ListNode* head, int k){
         temp = temp->next;
     }
 
-    // 
-    int i = len / k;
-    ListNode* prev = NULL, *next = NULL, *curr = head;
-    
+    ListNode* dummy = new ListNode(0);
+    ListNode* prev = dummy;
+    dummy->next = head;
 
+    // i = len / k #number of groups to reverse
+    for(int i = 0; i < len/k ;i++){
+        for(int j = 1; j < k; j++){
+            ListNode* temp = prev->next;
+            prev->next = head->next;
+            head->next = head->next->next;
+            prev->next->next = temp;
+        }
+        prev = head;
+        head = head->next;
+    }
 
-
-
-    return nullptr;
+    return dummy->next;
 }
