@@ -5,9 +5,9 @@
 #include "stack.h"
 #include "binary_search.h"
 #include "linked_list.h"
+#include "trees.h"
+
 #include <iostream>
-
-
 
 int main(){
 
