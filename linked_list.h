@@ -25,6 +25,7 @@ class LINKED_LIST{
     bool hasCycle(ListNode *head);
     ListNode* deleteDuplicates(ListNode* head);
     ListNode* mergeKLists(vector<ListNode*> lists);
+    ListNode* reverseKGroup(ListNode* head, int k);
 };
 
 class LRUCache{
