@@ -245,3 +245,24 @@ ListNode* LINKED_LIST::mergeKLists(vector<ListNode*> lists){
 
     return nullptr;
 }
+
+
+ListNode* reverseKGroup(ListNode* head, int k){
+    // length of list
+    int len = 0;
+    ListNode* temp = head;
+    while(temp){
+        len++;
+        temp = temp->next;
+    }
+
+    // 
+    int i = len / k;
+    ListNode* prev = NULL, *next = NULL, *curr = head;
+    
+
+
+
+
+    return nullptr;
+}
