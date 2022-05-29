@@ -14,6 +14,7 @@ struct TreeNode {
 class TREES{
     public:
     TreeNode* invertTree(TreeNode* root);
+    int maxDepth(TreeNode* root);
 };
 
 
