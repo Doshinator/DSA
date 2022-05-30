@@ -88,3 +88,25 @@ bool TREES::isBalanced(TreeNode* root){
     isBalancedHelper(root, ans);
     return ans;
 }
+
+
+void TREES::isSameTreeHelper(TreeNode* p, TreeNode* q, bool &ans){
+    if(p == nullptr || q == nullptr){
+        if(p != q)
+            ans = false;
+        
+        return;
+    }
+    isSameTreeHelper(p->left, q->left, ans);
+    isSameTreeHelper(p->right, q->right, ans);
+
+    if(p == nullptr || q == nullptr || p->val != q->val)
+        ans = false;
+
+}
+
+bool TREES::isSameTree(TreeNode* p, TreeNode* q){
+    bool ans = true;
+    isSameTreeHelper(p, q, ans);
+    return ans;
+}
