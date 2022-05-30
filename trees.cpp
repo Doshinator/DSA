@@ -50,3 +50,24 @@ int maxDepth(TreeNode* root){
     return res;
 
 }
+
+
+int diameterOfBinaryTreeHelper(TreeNode* root, int &ans){
+    if(root == nullptr)
+        return 0;
+
+    int leftH = diameterOfBinaryTreeHelper(root->left, ans);
+    int rightH = diameterOfBinaryTreeHelper(root->right, ans);
+    
+    ans = max(ans, leftH + rightH);
+    return 1 + max(leftH, rightH);
+}
+
+int TREES::diameterOfBinaryTree(TreeNode* root){
+    int ans = 0;
+    if(root == nullptr)
+        return 0;
+    diameterOfBinaryTreeHelper(root, ans);
+    return ans;
+}
+
