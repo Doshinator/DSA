@@ -23,7 +23,9 @@ class TREES{
     int isBalancedHelper(TreeNode* root, bool &ans);
 
     bool isSameTree(TreeNode* p, TreeNode* q); 
-    void isSameTreeHelper(TreeNode* p, TreeNode* q, bool &ans);
+    // void isSameTreeHelper(TreeNode* p, TreeNode* q, bool &ans);
+
+    bool isSubtree(TreeNode* root, TreeNode* subRoot);
 };
 
 
