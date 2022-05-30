@@ -15,7 +15,12 @@ class TREES{
     public:
     TreeNode* invertTree(TreeNode* root);
     int maxDepth(TreeNode* root);
+    
     int diameterOfBinaryTree(TreeNode* root);
+    int diameterOfBinaryTreeHelper(TreeNode* root, int &ans);
+    
+    bool isBalanced(TreeNode* root);
+    int isBalancedHelper(TreeNode* root, bool &ans);
 };
 
 

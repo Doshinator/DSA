@@ -52,7 +52,7 @@ int maxDepth(TreeNode* root){
 }
 
 
-int diameterOfBinaryTreeHelper(TreeNode* root, int &ans){
+int TREES::diameterOfBinaryTreeHelper(TreeNode* root, int &ans){
     if(root == nullptr)
         return 0;
 
@@ -71,3 +71,20 @@ int TREES::diameterOfBinaryTree(TreeNode* root){
     return ans;
 }
 
+
+int TREES::isBalancedHelper(TreeNode* root, bool &ans){
+    if(root == nullptr)
+        return 0;
+    int leftH = isBalancedHelper(root->left, ans);
+    int rightH = isBalancedHelper(root->right, ans);
+    if(abs(rightH - leftH) > 1)
+        ans = false;
+
+    return 1 + max(rightH, leftH);
+}
+
+bool TREES::isBalanced(TreeNode* root){
+    bool ans = true;
+    isBalancedHelper(root, ans);
+    return ans;
+}
