@@ -24,8 +24,9 @@ class TREES{
 
     bool isSameTree(TreeNode* p, TreeNode* q); 
     // void isSameTreeHelper(TreeNode* p, TreeNode* q, bool &ans);
-
+    
     bool isSubtree(TreeNode* root, TreeNode* subRoot);
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
 };
 
 

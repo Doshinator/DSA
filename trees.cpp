@@ -123,6 +123,9 @@ bool TREES::isSubtree(TreeNode* root, TreeNode* subRoot){
     if(isSameTree(root, subRoot)) return true;
     
     return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
-
 }   
 
+
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q){
+    
+}
