@@ -1,5 +1,6 @@
 #include "trees.h"
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ int maxDepth(TreeNode* root){
 
     while(!q.empty()){
         res++;
-        for(int i = 0; i < q.size(); i++){
+        for(int i = 0, n = q.size(); i < n; i++){
             TreeNode* node = q.front();
             q.pop();
             
@@ -126,7 +127,7 @@ bool TREES::isSubtree(TreeNode* root, TreeNode* subRoot){
 }   
 
 
-TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q){
+TreeNode* TREES::lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q){
     if(!root) return nullptr;
     
     if((p->val < root->val) && (q->val < root->val)){
@@ -137,3 +138,27 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q){
         return root;
     }
 }
+
+vector<vector<int>> TREES::levelOrder(TreeNode* root){
+    vector<vector<int>> res;
+    queue<TreeNode*> q;
+    q.push(root);
+    if(!root) return res;
+
+    while(!q.empty()){
+        vector<int> nodes;
+        for(int i = 0, n = q.size(); i < n; i++){
+            TreeNode* node = q.front();
+            q.pop();
+            nodes.push_back(node->val);
+            
+            if(node->left) q.push(node->left);
+            if(node->right) q.push(node->right);
+        }
+        res.push_back(nodes);
+    }
+    return res;
+
+    // add recursive
+}
+

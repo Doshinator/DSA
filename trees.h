@@ -1,6 +1,9 @@
 #ifndef _TREES_H_
 #define _TREES_H_
 
+#include <vector>
+using namespace std;
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -27,6 +30,7 @@ class TREES{
     
     bool isSubtree(TreeNode* root, TreeNode* subRoot);
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
+    vector<vector<int>> levelOrder(TreeNode* root);
 };
 
 
