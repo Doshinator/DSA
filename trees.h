@@ -33,6 +33,8 @@ class TREES{
     void levelOrderHelper(TreeNode* root, int depth, vector<vector<int>> &res);
     vector<int> rightSideView(TreeNode* root);
     void rightSideViewHelper(TreeNode* root, vector<int> &res, int depth);
+    int goodNodes(TreeNode* root);
+    void goodNodesHelper(TreeNode* root, int greatest, int &ans);
 };
 
 
