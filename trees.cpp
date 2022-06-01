@@ -172,3 +172,24 @@ void TREES::levelOrderHelper(TreeNode* root, int depth, vector<vector<int>> &res
     levelOrderHelper(root->left, depth + 1, res);
     levelOrderHelper(root->right, depth + 1, res);
 }
+
+vector<int> TREES::rightSideView(TreeNode* root){
+    vector<int> res;
+    rightSideViewHelper(root, res);
+    return res;
+}
+
+void TREES::rightSideViewHelper(TreeNode* root, vector<int> &res, int depth){
+    // base case
+    if(!root) return;
+
+    // and pre conditions you want to check for the current node before recursing into childrens node?
+    if(depth == res.size())
+        res.push_back(root->val);
+    
+    // recurse
+    rightSideViewHelper(root->right, res, depth + 1);
+    rightSideViewHelper(root->left, res, depth + 1);
+
+    // any post condition you want calculate and return to the parent node from the calculation of two childrens node
+}
