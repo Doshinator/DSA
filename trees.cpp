@@ -175,7 +175,7 @@ void TREES::levelOrderHelper(TreeNode* root, int depth, vector<vector<int>> &res
 
 vector<int> TREES::rightSideView(TreeNode* root){
     vector<int> res;
-    rightSideViewHelper(root, res);
+    rightSideViewHelper(root, res, 0);
     return res;
 }
 
@@ -193,3 +193,24 @@ void TREES::rightSideViewHelper(TreeNode* root, vector<int> &res, int depth){
 
     // any post condition you want calculate and return to the parent node from the calculation of two childrens node
 }
+
+
+int TREES::goodNodes(TreeNode* root){
+    int ans = 0;
+    goodNodesHelper(root, root->val, ans);
+    return ans;
+}
+
+
+
+void TREES::goodNodesHelper(TreeNode* root, int greatest, int &ans){
+    if(!root) return;
+
+    // post condition for child
+    if(root->val >= greatest) ans++;
+    greatest = max(greatest, root->val);
+
+    goodNodesHelper(root->left, greatest, ans);
+    goodNodesHelper(root->right, greatest, ans);
+}
+
