@@ -31,6 +31,8 @@ class TREES{
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
     vector<vector<int>> levelOrder(TreeNode* root);
     void levelOrderHelper(TreeNode* root, int depth, vector<vector<int>> &res);
+    vector<int> rightSideView(TreeNode* root);
+    void rightSideViewHelper(TreeNode* root, vector<int> &res, int depth);
 };
 
 
