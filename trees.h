@@ -26,11 +26,11 @@ class TREES{
     int isBalancedHelper(TreeNode* root, bool &ans);
 
     bool isSameTree(TreeNode* p, TreeNode* q); 
-    // void isSameTreeHelper(TreeNode* p, TreeNode* q, bool &ans);
-    
+    // void isSameTreeHelper(TreeNode* p, TreeNode* q, bool &ans); 
     bool isSubtree(TreeNode* root, TreeNode* subRoot);
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
     vector<vector<int>> levelOrder(TreeNode* root);
+    void levelOrderHelper(TreeNode* root, int depth, vector<vector<int>> &res);
 };
 
 

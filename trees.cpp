@@ -159,6 +159,16 @@ vector<vector<int>> TREES::levelOrder(TreeNode* root){
     }
     return res;
 
-    // add recursive
+    //  recursive method - check helper function
+    // int depth = 0;
+    // levelOrderHelper(root, depth, res);
 }
 
+void TREES::levelOrderHelper(TreeNode* root, int depth, vector<vector<int>> &res){
+    if(!root) return;
+    if(depth == res.size()) res.push_back({});
+    res[depth].push_back(root->val);
+
+    levelOrderHelper(root->left, depth + 1, res);
+    levelOrderHelper(root->right, depth + 1, res);
+}
