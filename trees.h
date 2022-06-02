@@ -35,6 +35,8 @@ class TREES{
     void rightSideViewHelper(TreeNode* root, vector<int> &res, int depth);
     int goodNodes(TreeNode* root);
     void goodNodesHelper(TreeNode* root, int greatest, int &ans);
+    bool isValidBST(TreeNode* root);
+    bool isValidBSTHelper(TreeNode* root, long int min, long int max);
 };
 
 
