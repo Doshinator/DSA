@@ -214,3 +214,15 @@ void TREES::goodNodesHelper(TreeNode* root, int greatest, int &ans){
     goodNodesHelper(root->right, greatest, ans);
 }
 
+
+bool TREES::isValidBST(TreeNode* root){
+    return isValidBSTHelper(root, root->val);
+}
+
+bool TREES::isValidBSTHelper(TreeNode* root, int left, int right){
+    if(!root) return true;
+    
+    
+    
+    return ;
+}
