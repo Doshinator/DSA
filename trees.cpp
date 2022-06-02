@@ -216,13 +216,17 @@ void TREES::goodNodesHelper(TreeNode* root, int greatest, int &ans){
 
 
 bool TREES::isValidBST(TreeNode* root){
-    return isValidBSTHelper(root, root->val);
+    return isValidBSTHelper(root, LONG_MIN, LONG_MAX);
 }
 
-bool TREES::isValidBSTHelper(TreeNode* root, int left, int right){
+bool TREES::isValidBSTHelper(TreeNode* root, long int left, long int right){
     if(!root) return true;
     
-    
-    
-    return ;
+    if(root->val >= right)
+        return false;
+
+    if(root->val <= left)
+        return false;
+
+    return isValidBSTHelper(root->left, left, root->val) && isValidBSTHelper(root->right, root->val, right);
 }
