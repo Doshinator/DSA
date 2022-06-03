@@ -246,4 +246,15 @@ void TREES::kthSmallestHelper(TreeNode* root, int k, vector<int> &ans){
     kthSmallestHelper(root->left, k, ans);
     ans.push_back(root->val);
     kthSmallestHelper(root->right, k, ans);
+
+    // keep a global int K 
+    /*
+    void dfs(TreeNode* root, &k){
+        if(!root) return;
+        dfs(root->left, k);
+        k = k - 1; // this is global counter
+        if(k == 0) ans = root->val;
+        dfs(root->right, k);
+    }
+    */
 }
