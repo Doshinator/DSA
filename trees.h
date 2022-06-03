@@ -37,6 +37,8 @@ class TREES{
     void goodNodesHelper(TreeNode* root, int greatest, int &ans);
     bool isValidBST(TreeNode* root);
     bool isValidBSTHelper(TreeNode* root, long int min, long int max);
+    int kthSmallest(TreeNode* root, int k);
+    void kthSmallestHelper(TreeNode* root, int k, vector<int> &ans);
 };
 
 

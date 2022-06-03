@@ -230,3 +230,20 @@ bool TREES::isValidBSTHelper(TreeNode* root, long int left, long int right){
 
     return isValidBSTHelper(root->left, left, root->val) && isValidBSTHelper(root->right, root->val, right);
 }
+
+
+int TREES::kthSmallest(TreeNode* root, int k){
+    vector<int> ans;
+    kthSmallestHelper(root, k, ans);
+    return ans[k - 1];
+}
+
+
+void TREES::kthSmallestHelper(TreeNode* root, int k, vector<int> &ans){
+    // k-th smallest value in BST
+    if(!root) return;
+
+    kthSmallestHelper(root->left, k, ans);
+    ans.push_back(root->val);
+    kthSmallestHelper(root->right, k, ans);
+}
