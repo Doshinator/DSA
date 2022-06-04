@@ -2,6 +2,7 @@
 #define _TREES_H_
 
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 struct TreeNode {
@@ -39,6 +40,8 @@ class TREES{
     bool isValidBSTHelper(TreeNode* root, long int min, long int max);
     int kthSmallest(TreeNode* root, int k);
     void kthSmallestHelper(TreeNode* root, int k, vector<int> &ans);
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder);
+    TreeNode* buildTreeHelper(vector<int> &preorder, unordered_map<int, int> &m, int &index, int l, int r);
 };
 
 

@@ -1,7 +1,7 @@
 #include "trees.h"
 #include <queue>
 #include <vector>
-
+#include <unordered_map>
 using namespace std;
 
 TreeNode* TREES::invertTree(TreeNode* root){
@@ -258,3 +258,39 @@ void TREES::kthSmallestHelper(TreeNode* root, int k, vector<int> &ans){
     }
     */
 }
+
+
+TreeNode* TREES::buildTree(vector<int>& preorder, vector<int>& inorder){
+    unordered_map<int, int> m;
+    for(int i = 0; i < inorder.size(); i++){
+        m[inorder[i]] = i;
+    }
+
+    // pre-order : [1, 2, 4, 5, 3, 6, 7, 9, 8]
+    // in-order :  [4, 2, 5, 1, 3, 7, 9, 6, 8]
+    // root is 1 ; pre-order[0]
+
+    // pre-order : left subtree - 2, 4, 5 |  right subtree - 3, 6, 7, 9, 8
+    // in-order : LHS = [4, 2, 5] | RHS = [3, 7, 9, 6, 8]
+    
+    int index = 0;
+    int n = inorder.size();
+
+    return buildTreeHelper(preorder, m, index, 0, n - 1);
+}
+
+TreeNode* TREES::buildTreeHelper(vector<int> &preorder, unordered_map<int, int> &m, int &index, int l, int r){
+    if(l > r) return nullptr;
+    
+    TreeNode* root = new TreeNode(preorder[index]);
+    index++;
+    int mid = m[root->val];
+
+    // left sub tree = dfs(preorder[1:mid], inorder[0, mid - 1]
+    // right sub tree = dfs(preorder[mid + 1 : preorder.size() - 1], inorder[mid + 1 inorder.size() - 1 ])
+    root->left = buildTreeHelper(preorder, m, index, l, mid - 1);
+    root->right = buildTreeHelper(preorder, m, index, mid + 1, r);
+    
+    return root;
+}
+   
