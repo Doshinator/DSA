@@ -294,3 +294,23 @@ TreeNode* TREES::buildTreeHelper(vector<int> &preorder, unordered_map<int, int> 
     return root;
 }
    
+
+int TREES::maxPathSum(TreeNode* root){
+    int ans = INT_MIN;
+    maxPathSumHelper(root, ans);
+    return ans;
+}
+
+int TREES::maxPathSumHelper(TreeNode* root, int &ans){
+    if(!root) return 0;
+
+    int l = maxPathSumHelper(root->left, ans);
+    int r = maxPathSumHelper(root->right, ans);
+    
+    l = max(l, 0); // filter out negative
+    r = max(r, 0); // filter out negative
+
+    ans = max(ans, root->val + l + r);
+    return root->val + max(l, r);
+}
+

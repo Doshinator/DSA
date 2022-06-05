@@ -41,7 +41,9 @@ class TREES{
     int kthSmallest(TreeNode* root, int k);
     void kthSmallestHelper(TreeNode* root, int k, vector<int> &ans);
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder);
-    TreeNode* buildTreeHelper(vector<int> &preorder, unordered_map<int, int> &m, int &index, int l, int r);
+    TreeNode* buildTreeHelper(vector<int> &preorder, unordered_map<int, int> &m, int &index, int l, int r); 
+    int maxPathSum(TreeNode* root);
+    int maxPathSumHelper(TreeNode* root, int &ans);
 };
 
 
