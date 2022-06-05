@@ -32,7 +32,7 @@ linked_list.o: linked_list.cpp linked_list.h
 trees.o: trees.cpp trees.h
 	$(CC) $(CFLAGS) trees.cpp
 
-trie.o : trie.cpp trie.o
+trie.o : trie.cpp trie.h
 	$(CC) $(CFLAGS) trie.cpp 
 	
 clean:
