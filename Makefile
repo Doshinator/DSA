@@ -2,8 +2,8 @@ CC = g++
 CFLAGS = -c -std=c++14
 all: main
 
-main: main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o
-	$(CC) main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o -o main
+main: main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o trie.o
+	$(CC) main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o trie.o -o main
 
 main.o: main.cpp 
 	$(CC) $(CFLAGS) main.cpp 
@@ -31,6 +31,9 @@ linked_list.o: linked_list.cpp linked_list.h
 
 trees.o: trees.cpp trees.h
 	$(CC) $(CFLAGS) trees.cpp
+
+trie.o : trie.cpp trie.o
+	$(CC) $(CFLAGS) trie.cpp 
 	
 clean:
 	rm *.o main
