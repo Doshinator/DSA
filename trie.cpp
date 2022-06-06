@@ -4,10 +4,6 @@
 
 using namespace std;
 
-Trie::Trie(){
-
-}
-
 void Trie::insert(string word){
     Trie* node = this;
     for(char c : word){

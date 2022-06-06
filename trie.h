@@ -8,7 +8,7 @@ using namespace std;
 
 class Trie{
     public:
-    Trie();
+    Trie(){}
     void insert(string word);
     bool search(string word);
     bool startsWith(string prefix);
@@ -17,6 +17,13 @@ class Trie{
     bool isWord = false;
 };
 
+
+class WordDictionary {
+    public:
+    WordDictionary(){}
+    void addWord(string word);
+    bool search(string word);
+};
 
 
 
