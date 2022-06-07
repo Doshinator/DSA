@@ -24,7 +24,7 @@ class WordDictionary {
     WordDictionary(){}
     void addWord(string word);
     bool search(string word);
-    bool search(int index, string &word, Trie* node);
+    bool search(Trie* node, string &word, int index);
     private:
     Trie* root = new Trie();
 };
