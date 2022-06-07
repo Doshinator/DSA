@@ -49,20 +49,22 @@ void WordDictionary::addWord(string word){
 }
 
 bool WordDictionary::search(string word){
-    return search(0, word, root);
+    return search(root, word, 0);
 }
 
-bool WordDictionary::search(int index, string &word, Trie* node){
+bool WordDictionary::search(Trie* node, string &word, int index){
     if(index == word.size())
         return node->isWord;
 
     if(word[index] == '.'){
-        for(auto it = node->children.begin(); it != node->children.end(); it++){
-            return search(index + 1, word, it->second);
+        for(auto it : node->children){
+            if(node->children && search(node->children[it.first], word, index + 1))
+                return true;
         }
     }
-    else if(node->children.count(word[index])){
-        return search(index + 1, word, node->children[word[index]]);
-    }
-    return false;
+
+    if(node->children.find(word[index]) == node->children.end())
+        return false;
+
+    return search(node->children[word[index]], word, index + 1);
 }
