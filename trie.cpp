@@ -68,3 +68,8 @@ bool WordDictionary::search(Trie* node, string &word, int index){
 
     return search(node->children[word[index]], word, index + 1);
 }
+
+
+vector<string> findWords(vector<vector<char>>& board, vector<string>& words){
+    
+}
