@@ -58,7 +58,7 @@ bool WordDictionary::search(Trie* node, string &word, int index){
 
     if(word[index] == '.'){
         for(auto it : node->children){
-            if(node->children && search(node->children[it.first], word, index + 1))
+            if(search(node->children[it.first], word, index + 1))
                 return true;
         }
     }
@@ -71,5 +71,5 @@ bool WordDictionary::search(Trie* node, string &word, int index){
 
 
 vector<string> findWords(vector<vector<char>>& board, vector<string>& words){
-    
+
 }
