@@ -58,8 +58,7 @@ bool WordDictionary::search(int index, string &word, Trie* node){
 
     if(word[index] == '.'){
         for(auto it = node->children.begin(); it != node->children.end(); it++){
-            if(search(index + 1, word, it->second)) 
-                return true;
+            return search(index + 1, word, it->second);
         }
     }
     else if(node->children.count(word[index])){
