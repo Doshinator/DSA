@@ -1,6 +1,7 @@
 #include "trie.h"
 #include <unordered_map>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -72,4 +73,5 @@ bool WordDictionary::search(Trie* node, string &word, int index){
 
 vector<string> findWords(vector<vector<char>>& board, vector<string>& words){
 
+    return {};
 }
