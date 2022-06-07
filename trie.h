@@ -12,6 +12,7 @@ class Trie{
     void insert(string word);
     bool search(string word);
     bool startsWith(string prefix);
+    friend class WordDictionary;
     private:
     unordered_map<char, Trie*> children;
     bool isWord = false;
@@ -23,6 +24,9 @@ class WordDictionary {
     WordDictionary(){}
     void addWord(string word);
     bool search(string word);
+    bool search(string word, Trie* node);
+    private:
+    Trie* root = new Trie();
 };
 
 

@@ -35,3 +35,40 @@ bool Trie::startsWith(string prefix){
     }
     return true;
 }
+
+// -- word dictionary
+void WordDictionary::addWord(string word){
+    Trie* curr = root;
+    for(auto c : word){
+        if(curr->children.find(c) == curr->children.end())
+            curr->children[c] = new Trie();
+        
+        curr = curr->children[c];
+    }
+    curr->isWord = true;
+}
+
+bool WordDictionary::search(string word){
+    return search(word, root);
+}
+
+bool WordDictionary::search(string word, Trie* node){
+    Trie* curr = root;
+    for(int i = 0; i < word.length(); i++){
+        char c = word[i];
+
+        if(c == '.'){
+            for(auto child : curr->children){
+                if(search(word.substr(i + 1), child.second)) return true;
+            }
+            return false;
+        }
+        else{
+            if(curr->children.find(c) == curr->children.end())
+                curr->children[c] = new Trie();
+
+            curr = curr->children[c];
+        }
+    }
+    return curr->isWord;
+}
