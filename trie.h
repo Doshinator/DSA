@@ -15,6 +15,7 @@ class Trie{
     bool startsWith(string prefix);
     friend class WordDictionary;
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words);
+    void findWords(vector<vector<char>>& board, int i, int j, Trie* root, string word);
     private:
     unordered_map<char, Trie*> children;
     bool isWord = false;
