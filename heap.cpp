@@ -1,6 +1,7 @@
 #include "heap.h"
 #include <vector>
 #include <queue>
+#include <unordered_map>
 
 using namespace std;
 
@@ -44,4 +45,31 @@ int Heap::lastStoneWeight(vector<int> stones){
     }
 
     return q.top();
+}
+
+vector<vector<int>> kClosest(vector<vector<int>> points, int k){
+    // √(x1 - x2)^2 + (y1 - y2)^2 
+    // origin : (0, 0)
+    // point 1 : (1, 3)
+    // point 2 : (-2, 2)
+    // √((1 - 0)^2 + (3 - 0)^2) = √(1 + 9) = √(10)
+    // √((-2 - 0)^2 + (2 - 0)^2) = √(4 + 4) = √(8)
+    // √(10) > √(8) so we return (-2, 2)
+    
+    vector<vector<int>> res;
+    priority_queue<vector<int>, vector<vector<int>>, Heap::compare> q;
+    
+    for(int i = 0; i < points.size(); i++){
+        q.push(points[i]);
+        if(q.size() > k)
+            q.pop();
+    }
+
+
+    while(!q.empty()){
+        res.push_back(q.top());
+        q.pop();
+    }
+
+    return res;
 }
