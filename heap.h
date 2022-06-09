@@ -8,7 +8,7 @@ using namespace std;
 
 class Heap{
     public: 
-
+    int lastStoneWeight(vector<int> stones);
 };
 
 class KthLargest{
