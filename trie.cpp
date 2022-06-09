@@ -1,6 +1,7 @@
 #include "trie.h"
 #include <unordered_map>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -71,5 +72,19 @@ bool WordDictionary::search(Trie* node, string &word, int index){
 
 
 vector<string> findWords(vector<vector<char>>& board, vector<string>& words){
+    Trie* root = new Trie();
+    
 
+    return {};
+}
+
+void Trie::findWords(vector<vector<char>>& board, int i, int j, Trie* root, string word){
+    // findWords(board[i][j])
+    // findWords(board[i][j + 1])
+    // findWords(board[i + 1][j])
+    // findWords(board[i + 1][j + 1])
+
+    if(i > board.size() || j > board[0].size() || i < 0 || j < 0 || board[i][j] == ' ')
+        return;
+    
 }

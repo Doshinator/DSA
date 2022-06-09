@@ -6,6 +6,7 @@
 #include "binary_search.h"
 #include "linked_list.h"
 #include "trees.h"
+#include "heap.h"
 
 #include <iostream>
 
@@ -144,6 +145,13 @@ int main(){
     Test(3, lru->get(3));
     Test(4, lru->get(4));
     
+
+    KthLargest* k = new KthLargest(3, {4, 5, 8, 2});
+    Test(4, k->add(3));
+    Test(5, k->add(5));
+    Test(5, k->add(10));
+    Test(8, k->add(9));
+    Test(8, k->add(4));
 
     Test::printResult();
     return 0;
