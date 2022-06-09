@@ -152,6 +152,13 @@ int main(){
     Test(5, k->add(10));
     Test(8, k->add(9));
     Test(8, k->add(4));
+    free(k);
+
+
+    Heap* h;
+    Test(1, h->lastStoneWeight({2,7,4,1,8,1}));
+    Test(1, h->lastStoneWeight({1}));
+    Test(0, h->lastStoneWeight({2, 2}));
 
     Test::printResult();
     return 0;
