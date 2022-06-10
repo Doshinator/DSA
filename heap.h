@@ -10,6 +10,10 @@ class Heap{
     public: 
     int lastStoneWeight(vector<int> stones);
     vector<vector<int>> kClosest(vector<vector<int>> points, int k);
+    int findKthLargest(vector<int> nums, int k);
+    
+
+    
     struct compare{
         bool operator()(vector<int> p, vector<int> q){
             return p[0] * p[0] + p[1] * p[1] < q[0] * q[0] + q[1] * q[1];

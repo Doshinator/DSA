@@ -160,6 +160,9 @@ int main(){
     Test(1, h->lastStoneWeight({1}));
     Test(0, h->lastStoneWeight({2, 2}));
 
+    Test(5, h->findKthLargest({3,2,1,5,6,4}, 2));
+    Test(4, h->findKthLargest({3,2,3,1,2,4,5,5,6}, 4));
+
     Test::printResult();
     return 0;
     
