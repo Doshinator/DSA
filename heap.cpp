@@ -73,3 +73,23 @@ vector<vector<int>> kClosest(vector<vector<int>> points, int k){
 
     return res;
 }
+
+
+int Heap::findKthLargest(vector<int> nums, int k){
+    // priority_queue<int, vector<int>, greater<int>> minHeap; 
+    // for(int i = 0; i < nums.size(); i++){
+    //     minHeap.push(nums[i]);
+    //     if(minHeap.size() > k)
+    //         minHeap.pop();
+    // }
+    // return minHeap.top();
+
+    priority_queue<int> maxHeap;
+    for(int i = 0; i < nums.size(); i++){
+        maxHeap.push(nums[i]);
+    }
+    for(int i = 0; i < k - 1; i++){
+        maxHeap.pop();
+    }
+    return maxHeap.top();
+}
