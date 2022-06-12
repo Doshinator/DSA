@@ -163,6 +163,9 @@ int main(){
     Test(5, h->findKthLargest({3,2,1,5,6,4}, 2));
     Test(4, h->findKthLargest({3,2,3,1,2,4,5,5,6}, 4));
 
+    Test(8, h->leastInterval({'A','A','A','B','B','B'}, 2));
+    Test(6, h->leastInterval({'A','A','A','B','B','B'}, 0));
+
     Test::printResult();
     return 0;
     

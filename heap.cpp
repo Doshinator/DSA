@@ -93,3 +93,23 @@ int Heap::findKthLargest(vector<int> nums, int k){
     }
     return maxHeap.top();
 }
+
+int Heap::leastInterval(vector<char> tasks, int n){
+    int maxCount = 0, e = 0;
+
+    unordered_map<char, int> m;
+    for(auto task : tasks){
+        m[task]++;
+    }
+
+    for(auto it : m){
+        maxCount = std::max(maxCount, it.second);
+    }
+
+    for(auto it : m){
+        if(it.second == maxCount)
+            e++;
+    }
+
+    return max((int)tasks.size(), (maxCount-1)*(n+1) + e);
+}
