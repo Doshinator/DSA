@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <unordered_map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -112,4 +113,36 @@ int Heap::leastInterval(vector<char> tasks, int n){
     }
 
     return max((int)tasks.size(), (maxCount-1)*(n+1) + e);
+}
+
+
+void Twitter::postTweet(int userId, int tweetId){
+    post.push_back({userId, tweetId});
+}
+
+vector<int> Twitter::getNewsFeed(int userId){
+    priority_queue<pair<int,int>> maxHeap;
+    vector<int> ans;
+    
+    for(int i = post.size() - 1, n = 10; i >= 0 && n > 0; i--){
+        if(post[i].first == userId || followers[userId].find(post[i].first) != followers[userId].end()){
+            ans.push_back(post[i].second);
+            n--;
+        }
+    }
+
+    while(!maxHeap.empty()){
+        ans.push_back(maxHeap.top().first);
+        maxHeap.pop();
+    }
+    return ans;
+}
+
+
+void Twitter::follow(int followerId, int followeeId){
+    followers[followerId].insert(followeeId);
+}
+
+void Twitter::unfollow(int followerId, int followeeId){
+    followers[followerId].erase(followeeId);
 }
