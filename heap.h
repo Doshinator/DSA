@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <queue>
+#include <unordered_map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -29,6 +31,19 @@ class KthLargest{
     int size;
     priority_queue<int, vector<int>, greater<int>> q;
     
+};
+
+
+class Twitter {
+    public:
+    Twitter(){}
+    void postTweet(int userId, int tweetId);    
+    vector<int> getNewsFeed(int userId);
+    void follow(int followerId, int followeeId);
+    void unfollow(int followerId, int followeeId);
+    private:
+    unordered_map<int, unordered_set<int>> followers;
+    vector<pair<int,int>> post;
 };
 
 
