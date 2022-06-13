@@ -121,19 +121,12 @@ void Twitter::postTweet(int userId, int tweetId){
 }
 
 vector<int> Twitter::getNewsFeed(int userId){
-    priority_queue<pair<int,int>> maxHeap;
     vector<int> ans;
-    
     for(int i = post.size() - 1, n = 10; i >= 0 && n > 0; i--){
         if(post[i].first == userId || followers[userId].find(post[i].first) != followers[userId].end()){
             ans.push_back(post[i].second);
             n--;
         }
-    }
-
-    while(!maxHeap.empty()){
-        ans.push_back(maxHeap.top().first);
-        maxHeap.pop();
     }
     return ans;
 }
