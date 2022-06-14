@@ -142,32 +142,28 @@ void Twitter::unfollow(int followerId, int followeeId){
 
 void MedianFinder::addNum(int num){
     // 4 4 - insert depends on element size > or < top of min or max heap
-    // 4 5 - if element needs to be inserted to heap of the greater size - resize the heap and then insert
     // 5 4 - if element needs to be inserted to heap of lower size - insert
-   
-    if(minHeap.size() == maxHeap.size()){
-        if(minHeap.top() > maxHeap.top()){
-            minHeap.push(num);
-        }
-        else{
-            maxHeap.push(num);
-        }
-    }
-    // minHeap.size + 1 < maxHeap.size
-    else{
-        if(minHeap.size() < maxHeap.size() && minHeap.top() > maxHeap.top()){
-            minHeap.push(num);
-        }
-        else{
-            maxHeap.push(num);
-        }
+    // 4 5 - if element needs to be inserted to heap of the greater size - resize the heap and then insert
+    if(maxHeap.empty() || num < maxHeap.top()){
+        maxHeap.push(num); // the smaller number goes on maxHeap which contains smaller element
+    }else{
+        minHeap.push(num); 
     }
 
+    if(maxHeap.size() > minHeap.size() + 1){
+        minHeap.push(maxHeap.top());
+        maxHeap.pop();
+    }
+    else if(maxHeap.size() + 1 < minHeap.size()){
+        maxHeap.push(minHeap.top());
+        minHeap.pop();
+    }
+    
 }
 
 double MedianFinder::findMedian(){
     if(minHeap.size() == maxHeap.size()) 
-        return (minHeap.top() + maxHeap.top()) / 2;
+        return (minHeap.top() + maxHeap.top()) / 2.0;
 
     return minHeap.size() < maxHeap.size()? maxHeap.top() : minHeap.top();
 }
