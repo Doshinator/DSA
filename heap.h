@@ -54,7 +54,7 @@ class MedianFinder{
     double findMedian();
     private:
     priority_queue<int> maxHeap; // contains all small elements ig. 50->0
-    priority_queue<int, vector<int>, greater<int>> minHeap; // contains all greater elements ig. 49->100gg
+    priority_queue<int, vector<int>, greater<int>> minHeap; // contains all greater elements ig. 49->100
 };
 
 
