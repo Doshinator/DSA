@@ -131,11 +131,43 @@ vector<int> Twitter::getNewsFeed(int userId){
     return ans;
 }
 
-
 void Twitter::follow(int followerId, int followeeId){
     followers[followerId].insert(followeeId);
 }
 
 void Twitter::unfollow(int followerId, int followeeId){
     followers[followerId].erase(followeeId);
+}
+
+
+void MedianFinder::addNum(int num){
+    // 4 4 - insert depends on element size > or < top of min or max heap
+    // 4 5 - if element needs to be inserted to heap of the greater size - resize the heap and then insert
+    // 5 4 - if element needs to be inserted to heap of lower size - insert
+   
+    if(minHeap.size() == maxHeap.size()){
+        if(minHeap.top() > maxHeap.top()){
+            minHeap.push(num);
+        }
+        else{
+            maxHeap.push(num);
+        }
+    }
+    // minHeap.size + 1 < maxHeap.size
+    else{
+        if(minHeap.size() < maxHeap.size() && minHeap.top() > maxHeap.top()){
+            minHeap.push(num);
+        }
+        else{
+            maxHeap.push(num);
+        }
+    }
+
+}
+
+double MedianFinder::findMedian(){
+    if(minHeap.size() == maxHeap.size()) 
+        return (minHeap.top() + maxHeap.top()) / 2;
+
+    return minHeap.size() < maxHeap.size()? maxHeap.top() : minHeap.top();
 }

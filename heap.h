@@ -29,7 +29,7 @@ class KthLargest{
     int add(int val);
     private:
     int size;
-    priority_queue<int, vector<int>, greater<int>> q;
+    priority_queue<int, vector<int>, greater<int>> q; // min heap
     
 };
 
@@ -46,6 +46,16 @@ class Twitter {
     vector<pair<int,int>> post;
 };
 
+
+class MedianFinder{
+    public:
+    MedianFinder(){}
+    void addNum(int num);
+    double findMedian();
+    private:
+    priority_queue<int> maxHeap; // contains all small elements ig. 50->0
+    priority_queue<int, vector<int>, greater<int>> minHeap; // contains all greater elements ig. 49->100gg
+};
 
 
 #endif
