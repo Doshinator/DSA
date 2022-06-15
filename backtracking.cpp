@@ -43,3 +43,23 @@ void BackTracking::combinationSumHelper(vector<int> &candidates, vector<int> &co
     combination.pop_back();
     combinationSumHelper(candidates, combination, ans, target, index + 1);
 }
+
+
+vector<vector<int>> BackTracking::permute(vector<int>& nums){
+    // [1,2,3] 
+    // [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+    vector<vector<int>> ans;
+    vector<int> permutations;
+    permute(nums, permutations, ans, 0);
+    return ans;
+}
+
+void permuteHelper(vector<int>& nums, vector<int> permutations, vector<vector<int>> ans, int index){
+    if(index == nums.size()){
+        ans.push_back(permutations);
+        return;
+    }
+
+    
+    
+}
