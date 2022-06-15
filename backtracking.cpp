@@ -12,17 +12,21 @@ vector<vector<int>> BackTracking::subsets(vector<int> &nums){
 }
 
 void BackTracking::subsetsHelper(vector<int> &nums,vector<int> &subset, vector<vector<int>> &ans, int index){ 
-    if(index >= nums.size()){
+    if(index == nums.size()){
         ans.push_back(subset);
         return;
     }
-    subset.push_back(nums[index]);
-    subsetsHelper(nums, subset, ans, index + 1);
-    subset.pop_back();
-    subsetsHelper(nums, subset, ans, index + 1);
+
+    for(int i = index; i < nums.size(); i++){
+        subset.push_back(nums[i]);
+        subsetsHelper(nums, subset, ans, index + 1);
+        subset.pop_back();
+    }
+
 }
 
 vector<vector<int>> BackTracking::combinationSum(vector<int>& candidates, int target){
+    std::sort(candidates.begin(), candidates.end());
     vector<vector<int>> ans;
     vector<int> combination;
     combinationSumHelper(candidates, combination, ans, target, 0);
@@ -34,14 +38,12 @@ void BackTracking::combinationSumHelper(vector<int> &candidates, vector<int> &co
         ans.push_back(combination);
         return;
     }
-
-    if(index >= candidates.size() || target < 0){
-        return;
+    
+    for(int i = index; i < candidates.size() && target >= candidates[i]; i++){
+        combination.push_back(candidates[i]);
+        combinationSumHelper(candidates, combination, ans, target - candidates[i], i);
+        combination.pop_back();
     }
-    combination.push_back(candidates[index]);
-    combinationSumHelper(candidates, combination, ans, target - candidates[index], index);
-    combination.pop_back();
-    combinationSumHelper(candidates, combination, ans, target, index + 1);
 }
 
 
@@ -50,16 +52,14 @@ vector<vector<int>> BackTracking::permute(vector<int>& nums){
     // [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
     vector<vector<int>> ans;
     vector<int> permutations;
-    permute(nums, permutations, ans, 0);
+    permuteHelper(nums, permutations, ans, 0);
     return ans;
 }
 
-void permuteHelper(vector<int>& nums, vector<int> permutations, vector<vector<int>> ans, int index){
+void BackTracking::permuteHelper(vector<int>& nums, vector<int> permutations, vector<vector<int>> ans, int index){
     if(index == nums.size()){
         ans.push_back(permutations);
         return;
     }
-
-    
     
 }
