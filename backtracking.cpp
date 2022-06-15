@@ -12,12 +12,15 @@ vector<vector<int>> BackTracking::subsets(vector<int> &nums){
 }
 
 void BackTracking::subsetsHelper(vector<int> &nums,vector<int> &subset, vector<vector<int>> &ans, int index){ 
-    if(index >= nums.size()){
+    if(index == nums.size()){
         ans.push_back(subset);
         return;
     }
-    subset.push_back(nums[index]);
-    subsetsHelper(nums, subset, ans, index + 1);
-    subset.pop_back();
-    subsetsHelper(nums, subset, ans, index + 1);
+
+    for(int i = index; i < nums.size(); i++){
+        subset.push_back(nums[i]);
+        subsetsHelper(nums, subset, ans, index + 1);
+        subset.pop_back();
+    }
+   
 }
