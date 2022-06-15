@@ -21,3 +21,25 @@ void BackTracking::subsetsHelper(vector<int> &nums,vector<int> &subset, vector<v
     subset.pop_back();
     subsetsHelper(nums, subset, ans, index + 1);
 }
+
+vector<vector<int>> BackTracking::combinationSum(vector<int>& candidates, int target){
+    vector<vector<int>> ans;
+    vector<int> combination;
+    combinationSumHelper(candidates, combination, ans, target, 0);
+    return ans;
+}
+
+void BackTracking::combinationSumHelper(vector<int> &candidates, vector<int> &combination, vector<vector<int>> &ans, int target, int index){
+    if(target == 0){
+        ans.push_back(combination);
+        return;
+    }
+
+    if(index >= candidates.size() || target < 0){
+        return;
+    }
+    combination.push_back(candidates[index]);
+    combinationSumHelper(candidates, combination, ans, target - candidates[index], index);
+    combination.pop_back();
+    combinationSumHelper(candidates, combination, ans, target, index + 1);
+}
