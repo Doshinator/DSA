@@ -61,5 +61,10 @@ void BackTracking::permuteHelper(vector<int>& nums, vector<int> permutations, ve
         ans.push_back(permutations);
         return;
     }
+
+    for(int i = index; i < nums.size(); i++){
+        swap(nums[index], nums[i]);
+        permuteHelper(nums, permutations, ans, index + 1);
+    }
     
 }
