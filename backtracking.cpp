@@ -85,6 +85,7 @@ void BackTracking::permuteHelper(vector<int> nums, vector<vector<int>> &ans, int
 vector<vector<int>> BackTracking::subsetsWithDup(vector<int>& nums){
     // Input: nums = [1,2,2]
     // Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+    sort(nums.begin(), nums.end());
     vector<vector<int>> ans;
     vector<int> subset;
     subsetsHelper(nums, subset, ans, 0);
@@ -100,7 +101,7 @@ void BackTracking::subsetsWithDupHelper(vector<int>& nums, vector<int> &subset, 
     for(int i = index; i < nums.size(); i++){
         if(i == index || nums[i] != nums[i - 1]){
             subset.push_back(nums[i]);
-            subsetsWithDup(nums, subset, ans, i + 1);
+            subsetsWithDupHelper(nums, subset, ans, i + 1);
             subset.pop_back();
         }
     }
