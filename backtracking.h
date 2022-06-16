@@ -14,7 +14,7 @@ class BackTracking{
     void combinationSumHelper(vector<int>& candidates, vector<int> &combination, vector<vector<int>> &ans, int target, int index);
 
     vector<vector<int>> permute(vector<int>& nums);
-    void permuteHelper(vector<int>& nums, vector<int> permutations, vector<vector<int>> ans, int index);
+    void permuteHelper(vector<int> nums, vector<vector<int>> &ans, int index);
 };
 
 
