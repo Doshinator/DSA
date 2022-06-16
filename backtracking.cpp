@@ -5,6 +5,8 @@ using namespace std;
 
 
 vector<vector<int>> BackTracking::subsets(vector<int> &nums){
+    // Input: nums = [1,2,3]
+    // Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
     vector<vector<int>> ans;
     vector<int> subset;
     subsetsHelper(nums, subset, ans, 0);
@@ -12,6 +14,9 @@ vector<vector<int>> BackTracking::subsets(vector<int> &nums){
 }
 
 void BackTracking::subsetsHelper(vector<int> &nums,vector<int> &subset, vector<vector<int>> &ans, int index){ 
+    // choice : we can choose element from array
+    // constaint : we need to chooise all elements
+    // goal (reach our base case) : we looped through entire nums array
     if(index == nums.size()){
         ans.push_back(subset);
         return;
@@ -20,12 +25,15 @@ void BackTracking::subsetsHelper(vector<int> &nums,vector<int> &subset, vector<v
     for(int i = index; i < nums.size(); i++){
         subset.push_back(nums[i]);
         subsetsHelper(nums, subset, ans, index + 1);
+        // if our decision doesn't work out - come back from exploration - eject the dicision
         subset.pop_back();
     }
 
 }
 
 vector<vector<int>> BackTracking::combinationSum(vector<int>& candidates, int target){
+    // Input: candidates = [2,3,6,7], target = 7
+    // Output: [[2,2,3],[7]]
     std::sort(candidates.begin(), candidates.end());
     vector<vector<int>> ans;
     vector<int> combination;
@@ -34,6 +42,9 @@ vector<vector<int>> BackTracking::combinationSum(vector<int>& candidates, int ta
 }
 
 void BackTracking::combinationSumHelper(vector<int> &candidates, vector<int> &combination, vector<vector<int>> &ans, int target, int index){
+    // choice : choose an element multiple times or combination of elements from given array
+    // constraint : if we don't reach the target, we can continue to recurse to next element
+    // goal (reach our base case): get target to 0 (answer)
     if(target == 0){
         ans.push_back(combination);
         return;
@@ -42,6 +53,7 @@ void BackTracking::combinationSumHelper(vector<int> &candidates, vector<int> &co
     for(int i = index; i < candidates.size() && target >= candidates[i]; i++){
         combination.push_back(candidates[i]);
         combinationSumHelper(candidates, combination, ans, target - candidates[i], i);
+        // if our decision doesn't work out - come back from exploration - eject the dicision
         combination.pop_back();
     }
 }
@@ -51,20 +63,21 @@ vector<vector<int>> BackTracking::permute(vector<int>& nums){
     // [1,2,3] 
     // [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
     vector<vector<int>> ans;
-    vector<int> permutations;
-    permuteHelper(nums, permutations, ans, 0);
+    permuteHelper(nums, ans, 0);
     return ans;
 }
 
-void BackTracking::permuteHelper(vector<int>& nums, vector<int> permutations, vector<vector<int>> ans, int index){
+void BackTracking::permuteHelper(vector<int> nums, vector<vector<int>> &ans, int index){
+    // choice : build subarray using all values from nums array
+    // constraint : if we we need to re-arrange elements after fully exploring to form another set of permutated array
+    // goal (reach our base) : we reached end of array
     if(index == nums.size()){
-        ans.push_back(permutations);
+        ans.push_back(nums);
         return;
     }
 
     for(int i = index; i < nums.size(); i++){
         swap(nums[index], nums[i]);
-        permuteHelper(nums, permutations, ans, index + 1);
+        permuteHelper(nums, ans, index + 1);
     }
-    
 }
