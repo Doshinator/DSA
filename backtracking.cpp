@@ -92,7 +92,6 @@ vector<vector<int>> BackTracking::subsetsWithDup(vector<int>& nums){
 }
 
 void BackTracking::subsetsWithDupHelper(vector<int>& nums, vector<int> &subset, vector<vector<int>> &ans, int index){
-    
     if(index == nums.size()){
         ans.push_back(subset);
         return;
