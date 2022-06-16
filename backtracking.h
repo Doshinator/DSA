@@ -15,6 +15,9 @@ class BackTracking{
 
     vector<vector<int>> permute(vector<int>& nums);
     void permuteHelper(vector<int> nums, vector<vector<int>> &ans, int index);
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums);
+    void subsetsWithDupHelper(vector<int>& nums, vector<int> &subset, vector<vector<int>> &ans, int index);
 };
 
 
