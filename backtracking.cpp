@@ -17,10 +17,7 @@ void BackTracking::subsetsHelper(vector<int> &nums,vector<int> &subset, vector<v
     // choice : we can choose element from array
     // constaint : we need to chooise all elements
     // goal (reach our base case) : we looped through entire nums array
-    if(index == nums.size()){
-        ans.push_back(subset);
-        return;
-    }
+    ans.push_back(subset);
 
     for(int i = index; i < nums.size(); i++){
         subset.push_back(nums[i]);
@@ -93,16 +90,13 @@ vector<vector<int>> BackTracking::subsetsWithDup(vector<int>& nums){
 }
 
 void BackTracking::subsetsWithDupHelper(vector<int>& nums, vector<int> &subset, vector<vector<int>> &ans, int index){
-    if(index == nums.size()){
-        ans.push_back(subset);
-        return;
-    }
+    ans.push_back(subset);
 
     for(int i = index; i < nums.size(); i++){
-        if(i == index || nums[i] != nums[i - 1]){
-            subset.push_back(nums[i]);
-            subsetsWithDupHelper(nums, subset, ans, i + 1);
-            subset.pop_back();
-        }
+        if(nums[i] == nums[i-1] && i == index)
+            continue;
+        subset.push_back(nums[i]);
+        subsetsWithDupHelper(nums, subset, ans, i + 1);
+        subset.pop_back();
     }
 }
