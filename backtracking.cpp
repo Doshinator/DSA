@@ -93,7 +93,7 @@ void BackTracking::subsetsWithDupHelper(vector<int>& nums, vector<int> &subset, 
     ans.push_back(subset);
 
     for(int i = index; i < nums.size(); i++){
-        if(nums[i] == nums[i-1] && i == index)
+        if(nums[i] == nums[i-1] && i != index)
             continue;
         subset.push_back(nums[i]);
         subsetsWithDupHelper(nums, subset, ans, i + 1);
