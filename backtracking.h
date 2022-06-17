@@ -18,6 +18,9 @@ class BackTracking{
 
     vector<vector<int>> subsetsWithDup(vector<int>& nums);
     void subsetsWithDupHelper(vector<int>& nums, vector<int> &subset, vector<vector<int>> &ans, int index);
+
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target);
+    void combinationSum2Helper(vector<int>& candidates, vector<int> &combination, vector<vector<int>> &ans, int target, int index);
 };
 
 

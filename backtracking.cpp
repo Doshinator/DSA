@@ -100,3 +100,25 @@ void BackTracking::subsetsWithDupHelper(vector<int>& nums, vector<int> &subset, 
         subset.pop_back();
     }
 }
+
+vector<vector<int>> BackTracking::combinationSum2(vector<int>& candidates, int target){
+    std::sort(candidates.begin(), candidates.end());
+    vector<int> combination;
+    vector<vector<int>> ans;
+    combinationSum2Helper(candidates, combination, ans, target, 0);
+    return ans;
+}
+
+void BackTracking::combinationSum2Helper(vector<int>& candidates, vector<int> &combination, vector<vector<int>> &ans, int target, int index){
+    if(target == 0){
+        ans.push_back(combination);
+        return;
+    }
+
+    for(int i = index; i < candidates.size() && target >= candidates[i]; i++){
+        if(i != index && candidates[i] == candidates[i-1]) continue;
+        combination.push_back(candidates[i]);
+        combinationSum2Helper(candidates, combination, ans, target - candidates[i], i + 1);
+        combination.pop_back();
+    }
+}
