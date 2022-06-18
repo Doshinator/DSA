@@ -1,5 +1,6 @@
 #include "backtracking.h"
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -47,7 +48,7 @@ void BackTracking::combinationSumHelper(vector<int> &candidates, vector<int> &co
         return;
     }
     
-    for(int i = index; i < candidates.size() && target >= candidates[i]; i++){
+    for(int i = index; i < candidates.size() && target > 0; i++){
         combination.push_back(candidates[i]);
         combinationSumHelper(candidates, combination, ans, target - candidates[i], i);
         // if our decision doesn't work out - come back from exploration - eject the dicision
@@ -115,10 +116,45 @@ void BackTracking::combinationSum2Helper(vector<int>& candidates, vector<int> &c
         return;
     }
 
-    for(int i = index; i < candidates.size() && target >= candidates[i]; i++){
+    for(int i = index; i < candidates.size() && target > 0; i++){
         if(i != index && candidates[i] == candidates[i-1]) continue;
         combination.push_back(candidates[i]);
         combinationSum2Helper(candidates, combination, ans, target - candidates[i], i + 1);
         combination.pop_back();
     }
 }
+
+bool BackTracking::exist(vector<vector<char>>& board, string word){
+    // Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+    // Output: true
+    for(int x = 0; x < board.size(); x++){
+        for(int y = 0; y < board[x].size(); y++){
+            if(existHelper(board, word, x, y, 0))
+                return true;
+        }
+    }
+    return false;
+}
+
+bool BackTracking::existHelper(vector<vector<char>>& board, string word, int m, int n, int index){
+    // choices : we can choose cell [m][n] if it matches word
+    // constraints : if we don't have our subset word matching word, we keep going or out of bound
+    // goal : subset of string matches wrod
+
+    if(index == word.size()){
+        return true;
+    }
+    
+    if(m < 0 || n < 0 || m > board.size()-1 || n > board[0].size()-1) return false; // board out of bound check
+    if(board[m][n] != word[index]) return false; // word char does not match the one on the board at that point
+    
+    board[m][n] = '*';
+    bool exists = existHelper(board, word, m + 1, n, index + 1) ||
+                    existHelper(board, word, m - 1, n, index + 1) ||
+                    existHelper(board, word, m, n + 1, index + 1) ||
+                    existHelper(board, word, m, n - 1, index + 1);
+
+    board[m][n] = word[index];
+    return exists;
+}
+
