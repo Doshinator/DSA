@@ -21,6 +21,9 @@ class BackTracking{
 
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target);
     void combinationSum2Helper(vector<int>& candidates, vector<int> &combination, vector<vector<int>> &ans, int target, int index);
+    
+    bool exist(vector<vector<char>>& board, string word);
+    bool existHelper(vector<vector<char>>& board, string word, int m, int n, int index);
 };
 
 
