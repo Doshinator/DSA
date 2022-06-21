@@ -1,7 +1,7 @@
 #include "backtracking.h"
 #include <vector>
 #include <string>
-
+#include <unordered_map>
 using namespace std;
 
 
@@ -192,3 +192,26 @@ bool BackTracking::isPalindrome(string &s, int l, int r){
     return true;
 }
 
+vector<string> BackTracking::letterCombinations(string digits){
+    // Input: digits = "23"
+    // Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+    if (!digits.size())
+        return {};
+    vector<string>letter({"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"});
+    vector<string> ans;
+    string subset;
+    letterCombinationsHelper(digits, subset, ans, letter, 0);
+    return ans;
+}
+
+void BackTracking::letterCombinationsHelper(string &digits, string subset, vector<string> &ans, vector<string> &letter, int index){
+    if(index == digits.size()){
+        ans.push_back(subset);
+        return;
+    }
+
+    int d = digits[index] - '0'; // get digit's to int "23" -> 2 and 3
+    for(int i = 0; i < letter[d].size(); i++){
+        letterCombinationsHelper(digits, subset + letter[d][i], ans, letter, index + 1);
+    }
+}

@@ -2,6 +2,8 @@
 #define _BACKTRACKING_H_
 
 #include <vector>
+#include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -28,6 +30,9 @@ class BackTracking{
     vector<vector<string>> partition(string s);
     void partitionHelper(string &s, vector<string> &subset, vector<vector<string>> &ans, int index);
     bool isPalindrome(string &s, int l, int r);
+
+    vector<string> letterCombinations(string digits);
+    void letterCombinationsHelper(string &digits, string subset, vector<string> &ans, vector<string> &letter, int index);
 };
 
 
