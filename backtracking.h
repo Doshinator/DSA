@@ -24,6 +24,10 @@ class BackTracking{
     
     bool exist(vector<vector<char>>& board, string word);
     bool existHelper(vector<vector<char>>& board, string word, int m, int n, int index);
+
+    vector<vector<string>> partition(string s);
+    void partitionHelper(string &s, vector<string> &subset, vector<vector<string>> &ans, int index);
+    bool isPalindrome(string &s, int l, int r);
 };
 
 
