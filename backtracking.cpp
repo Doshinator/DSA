@@ -158,3 +158,37 @@ bool BackTracking::existHelper(vector<vector<char>>& board, string word, int m, 
     return exists;
 }
 
+
+vector<vector<string>> BackTracking::partition(string s){
+    // Input: s = "aab"
+    // Output: [["a","a","b"],["aa","b"]]
+    vector<vector<string>> res;
+    vector<string> subset;
+    partitionHelper(s, subset, res, 0);
+    return res;
+}
+
+void BackTracking::partitionHelper(string &s, vector<string> &subset, vector<vector<string>> &ans, int index){
+    if(index == s.size()){
+        ans.push_back(subset);
+        return;
+    }
+
+    for(int i = index; i < s.size(); i++){
+        if(isPalindrome(s, index, i)){
+            subset.push_back(s.substr(index, i - index + 1)); // index or original index to i- which is iterating every dfs 
+            partitionHelper(s, subset, ans, i + 1);
+            subset.pop_back();
+        }
+    }
+}
+
+
+bool BackTracking::isPalindrome(string &s, int l, int r){
+    while(l < r){
+        if(s[l++] != s[r--])
+            return false;
+    }
+    return true;
+}
+
