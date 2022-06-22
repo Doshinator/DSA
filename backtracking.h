@@ -33,6 +33,10 @@ class BackTracking{
 
     vector<string> letterCombinations(string digits);
     void letterCombinationsHelper(string &digits, string subset, vector<string> &ans, vector<string> &letter, int index);
+
+    vector<vector<string>> solveNQueens(int n);
+    void solveQueensHelper(vector<vector<string>> &ans, vector<string> &board, int &n, int r);
+    bool validPosition(vector<string> &board, int r, int c, int &n);
 };
 
 
