@@ -230,6 +230,8 @@ void BackTracking::solveQueensHelper(vector<vector<string>> &ans, vector<string>
     if(r == n){
         ans.push_back(board);
         return;
+
+        // in case of n_queens II - return count... so keep a global and count++ here when we reach this case
     }
 
     for(int c = 0; c != n; c++){
