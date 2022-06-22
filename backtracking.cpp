@@ -215,3 +215,46 @@ void BackTracking::letterCombinationsHelper(string &digits, string subset, vecto
         letterCombinationsHelper(digits, subset + letter[d][i], ans, letter, index + 1);
     }
 }
+
+vector<vector<string>> BackTracking::solveNQueens(int n){
+    // Input: n = 4
+    // Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+    vector<vector<string>> ans;
+    vector<string> subset;
+
+    return ans;
+}
+
+void BackTracking::solveQueensHelper(vector<vector<string>> &ans, vector<string> &board, int &n, int r){
+    // goal : place upto n queens
+    if(r == n){
+        ans.push_back(board);
+        return;
+    }
+
+    for(int c = 0; c != n; c++){
+        if(!validPosition(board, r, c, n)) continue;
+        board[r][c] = 'Q';
+        solveQueensHelper(ans, board, n, r+1);
+        board[r][c] = '.';
+    }
+}
+
+bool BackTracking::validPosition(vector<string> &board, int r, int c, int &n){
+    // check each row , same col
+    for(int i = 0; i < r; i++)
+        if(board[i][c] == 'Q')
+            return false;
+    
+    // check left diag
+    for(int i = r, j = c; i >= 0 && j >= 0; i--, j--)
+            if(board[i][j] == 'Q')
+                return false;
+
+    // check right diag
+    for(int i = r, j = c; i >= 0 && j < n; i--, j++)
+        if(board[i][j] == 'Q')
+            return false;
+
+    return true;
+}
