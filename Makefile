@@ -2,8 +2,8 @@ CC = g++
 CFLAGS = -c -std=c++14
 all: main
 
-main: main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o trie.o heap.o backtracking.o
-	$(CC) main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o trie.o heap.o backtracking.o -o main
+main: main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o trie.o heap.o backtracking.o graphs.o
+	$(CC) main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o trie.o heap.o backtracking.o graphs.o -o main
 
 main.o: main.cpp 
 	$(CC) $(CFLAGS) main.cpp 
@@ -40,5 +40,9 @@ heap.o: heap.cpp heap.h
 
 backtracking.o : backtracking.cpp backtracking.h
 	$(CC) $(CFLAGS) backtracking.cpp
+
+graphs.o : graphs.cpp graphs.h
+	$(CC) $(CFLAGS) graphs.cpp
+
 clean:
 	rm *.o main
