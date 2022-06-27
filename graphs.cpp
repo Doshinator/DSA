@@ -1,5 +1,6 @@
 #include "graphs.h"
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -28,4 +29,19 @@ void Graph::numIslandsHelper(vector<vector<char>> &grid, vector<vector<bool>> &v
     numIslandsHelper(grid, visited, m - 1, n);
     numIslandsHelper(grid, visited, m, n + 1);
     numIslandsHelper(grid, visited, m, n - 1);
+}
+
+
+Graph::Node* Graph::cloneGraph(Node* node){
+    // map node -> new copy
+    if(!node)
+        return NULL;
+    
+    if(copies.find(node) == copies.end()){
+        copies[node] = new Node(node->val);
+        for(int i = 0; i < node->neighbors.size(); i++){
+            copies[node]->neighbors.push_back(cloneGraph(node->neighbors[i]));
+        }
+    }
+    return copies[node];
 }
