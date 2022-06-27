@@ -76,6 +76,7 @@ int Graph::maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>>
     if(m < 0 || n < 0 || m > grid.size() - 1 || n > grid[0].size() - 1 || grid[m][n] == 0 || visited[m][n])
         return 0;
 
+    visited[m][n] = true;
     return 1 + 
         maxAreaOfIslandHelper(grid, visited, m+1, n) + 
         maxAreaOfIslandHelper(grid, visited, m-1, n) + 
