@@ -27,4 +27,8 @@ class Graph{
     };
     Node* cloneGraph(Node* node);
     unordered_map<Node*, Node*> copies;
+
+    int maxAreaOfIsland(vector<vector<int>>& grid);
+    void maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>> &visited, int m, int n, int &count, int &res);
+    int maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>> &visited, int m, int n);
 };

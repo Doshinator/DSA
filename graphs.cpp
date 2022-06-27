@@ -45,3 +45,40 @@ Graph::Node* Graph::cloneGraph(Node* node){
     }
     return copies[node];
 }
+
+int Graph::maxAreaOfIsland(vector<vector<int>>& grid){
+    vector<vector<bool>> visited(grid.size(), vector<bool>(grid[0].size(), false));
+    int count = 0;
+    int res = 0;
+    for(int i = 0; i < grid.size(); i++){
+        for(int j = 0; j < grid[i].size(); j++){
+            if(grid[i][j] == 1 && !visited[i][j])
+                maxAreaOfIslandHelper(grid, visited, i, j, count, res);
+        }
+    }
+    return res;
+}
+
+void Graph::maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>> &visited, int m, int n, int &count, int &res){
+    if(m < 0 || n < 0 || m > grid.size() - 1 || n > grid[0].size() - 1 || grid[m][n] == 0 || visited[m][n])
+        return;
+
+    visited[m][n] = true;
+    count += 1;
+    res = std::max(res, count);
+    maxAreaOfIslandHelper(grid, visited, m+1, n, count, res);
+    maxAreaOfIslandHelper(grid, visited, m-1, n, count, res);
+    maxAreaOfIslandHelper(grid, visited, m, n+1, count, res);
+    maxAreaOfIslandHelper(grid, visited, m, n-1, count, res);
+}
+
+int Graph::maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>> &visited, int m, int n){
+    if(m < 0 || n < 0 || m > grid.size() - 1 || n > grid[0].size() - 1 || grid[m][n] == 0 || visited[m][n])
+        return 0;
+
+    return 1 + 
+        maxAreaOfIslandHelper(grid, visited, m+1, n) + 
+        maxAreaOfIslandHelper(grid, visited, m-1, n) + 
+        maxAreaOfIslandHelper(grid, visited, m, n+1) + 
+        maxAreaOfIslandHelper(grid, visited, m, n-1);
+}
