@@ -31,4 +31,7 @@ class Graph{
     int maxAreaOfIsland(vector<vector<int>>& grid);
     void maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>> &visited, int m, int n, int &count, int &res);
     int maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>> &visited, int m, int n);
+
+    vector<vector<int>> pacificAtlantic(vector<vector<int>> &heights);
+    void pacificAtlanticHelper(vector<vector<int>> &heights, vector<vector<bool>> &visited, int m, int n, int val);
 };
