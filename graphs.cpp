@@ -83,3 +83,43 @@ int Graph::maxAreaOfIslandHelper(vector<vector<int>> &grid, vector<vector<bool>>
         maxAreaOfIslandHelper(grid, visited, m, n+1) + 
         maxAreaOfIslandHelper(grid, visited, m, n-1);
 }
+
+
+vector<vector<int>> Graph::pacificAtlantic(vector<vector<int>> &heights){
+    int m = heights.size(), n = heights[0].size();
+    vector<vector<bool>> pacific(m, vector<bool>(n, false));
+    vector<vector<bool>> atlantic(m, vector<bool>(n, false));
+
+    vector<vector<int>> ans;
+
+    for(int i = 0; i < m; i++){
+        pacificAtlanticHelper(heights, pacific, i, 0, INT_MIN);
+        pacificAtlanticHelper(heights, atlantic, i, n-1, INT_MIN);
+    }
+
+    for(int i = 0; i < n; i++){
+        pacificAtlanticHelper(heights, pacific, 0, i, INT_MIN);
+        pacificAtlanticHelper(heights, atlantic, m-1, i, INT_MIN);
+    }
+
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            if(pacific[i][j] && atlantic[i][j])
+                ans.push_back({i,j});
+        }
+    }
+
+    return ans;
+}
+
+void Graph::pacificAtlanticHelper(vector<vector<int>> &heights, vector<vector<bool>> &visited, int m, int n, int val){
+    if(m < 0 || n < 0 || m > heights.size() - 1|| n > heights[0].size() - 1 || 
+        visited[m][n] || heights[m][n] < val)
+        return;
+
+    visited[m][n] = true;
+    pacificAtlanticHelper(heights, visited, m+1, n, heights[m][n]);
+    pacificAtlanticHelper(heights, visited, m-1, n, heights[m][n]);
+    pacificAtlanticHelper(heights, visited, m, n+1, heights[m][n]);
+    pacificAtlanticHelper(heights, visited, m, n-1, heights[m][n]);
+}
