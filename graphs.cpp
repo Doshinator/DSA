@@ -151,13 +151,13 @@ void Graph::surroundingRegion(vector<vector<char>> &board){
         for(int j = 0; j < n; j++){
             if(board[i][j] == 'O')
                 board[i][j] = 'X';
-            else if(board[i][j] == '1')
+            if(board[i][j] == '1')
                 board[i][j] = 'O';
         }
     }
 }
 
-void surroundingRegionHelper(vector<vector<char>> &board, vector<vector<bool>> &visited, int m, int n){
+void Graph::surroundingRegionHelper(vector<vector<char>> &board, vector<vector<bool>> &visited, int m, int n){
     if(m < 0 || n < 0 || m > board.size() - 1 || n > board[0].size() - 1 || 
         visited[m][n] || board[m][n] != 'O')
         return;
@@ -169,3 +169,6 @@ void surroundingRegionHelper(vector<vector<char>> &board, vector<vector<bool>> &
     surroundingRegionHelper(board, visited, m, n-1);
 }
 
+int Graph::orangesRotting(vector<vector<int>> &grid){
+
+}

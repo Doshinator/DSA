@@ -36,4 +36,7 @@ class Graph{
     void pacificAtlanticHelper(vector<vector<int>> &heights, vector<vector<bool>> &visited, int m, int n, int val);
 
     void surroundingRegion(vector<vector<char>> &board);
+    void surroundingRegionHelper(vector<vector<char>> &board, vector<vector<bool>> &visited, int m, int n);
+
+    int orangesRotting(vector<vector<int>> &grid);
 };
