@@ -34,4 +34,6 @@ class Graph{
 
     vector<vector<int>> pacificAtlantic(vector<vector<int>> &heights);
     void pacificAtlanticHelper(vector<vector<int>> &heights, vector<vector<bool>> &visited, int m, int n, int val);
+
+    void surroundingRegion(vector<vector<char>> &board);
 };

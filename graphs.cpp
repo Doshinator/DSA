@@ -123,3 +123,20 @@ void Graph::pacificAtlanticHelper(vector<vector<int>> &heights, vector<vector<bo
     pacificAtlanticHelper(heights, visited, m, n+1, heights[m][n]);
     pacificAtlanticHelper(heights, visited, m, n-1, heights[m][n]);
 }
+
+void Graph::surroundingRegionHelper(vector<vector<char>> &board){
+    
+}
+
+void surroundingRegionHelper(vector<vector<char>> &board, vector<vector<bool>> &visited, int m, int n){
+    if(m < 0 || n < 0 || m > board.size() - 1 || n > board[0].size() - 1 || 
+        visited[m][n] || board[m][n] == 'X')
+        return;
+    
+    visited[m][n] = true;
+    surroundingRegionHelper(board, visited, m+1, n);    
+    surroundingRegionHelper(board, visited, m-1, n);
+    surroundingRegionHelper(board, visited, m, n+1);
+    surroundingRegionHelper(board, visited, m, n-1);
+}
+
