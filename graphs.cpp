@@ -124,13 +124,42 @@ void Graph::pacificAtlanticHelper(vector<vector<int>> &heights, vector<vector<bo
     pacificAtlanticHelper(heights, visited, m, n-1, heights[m][n]);
 }
 
-void Graph::surroundingRegionHelper(vector<vector<char>> &board){
+void Graph::surroundingRegion(vector<vector<char>> &board){
+    int m = board.size(), n = board[0].size();
+    vector<vector<bool>> visited(m, vector<bool>(n, false));
+
+    for(int i = 0; i < m; i++){
+        // dfs the boarder and mark all O that can't be changed as 'visited'
+        surroundingRegionHelper(board, visited, i, 0);
+        surroundingRegionHelper(board, visited, i, n-1);
+    }
     
+    for(int i = 0; i < n; i++){
+        surroundingRegionHelper(board, visited, 0, i);
+        surroundingRegionHelper(board, visited, m-1, i);
+    }
+
+
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            if(visited[i][j])
+                board[i][j] = '1';
+        }
+    }
+
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            if(board[i][j] == 'O')
+                board[i][j] = 'X';
+            else if(board[i][j] == '1')
+                board[i][j] = 'O';
+        }
+    }
 }
 
 void surroundingRegionHelper(vector<vector<char>> &board, vector<vector<bool>> &visited, int m, int n){
     if(m < 0 || n < 0 || m > board.size() - 1 || n > board[0].size() - 1 || 
-        visited[m][n] || board[m][n] == 'X')
+        visited[m][n] || board[m][n] != 'O')
         return;
     
     visited[m][n] = true;
