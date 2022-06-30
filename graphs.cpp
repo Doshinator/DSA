@@ -1,6 +1,7 @@
 #include "graphs.h"
 #include <vector>
 #include <unordered_map>
+#include <queue>
 
 using namespace std;
 
@@ -170,5 +171,51 @@ void Graph::surroundingRegionHelper(vector<vector<char>> &board, vector<vector<b
 }
 
 int Graph::orangesRotting(vector<vector<int>> &grid){
+    int freshOranges = 0, minutes = 0;
+    
+    int m = grid.size(), n = grid[0].size();
+    
+    vector<vector<bool>> visited(m, vector<bool>(n, false));
+    vector<vector<int>> dir = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+    queue<vector<int>> q;
 
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            if(grid[i][j] == 1) 
+                freshOranges++;
+            if(!visited[i][j] && grid[i][j] == 2)
+                q.push({i,j});
+        }
+    }
+
+
+    while(!q.empty()){
+        vector<int> curr;
+        minutes++;
+
+        for(int i = 0, n = q.size(); i < n; i++){
+            curr = q.front(); q.pop();
+
+            for(int j = 0; j < dir.size(); j++){
+                int m = curr[0] + dir[i][0];
+                int n = curr[1] + dir[i][1];
+
+                if(m < 0 || n < 0 || m > grid.size() - 1 || n > grid[0].size() - 1 || 
+                    visited[m][n] || grid[m][n] != 1)
+                    continue;
+                
+                grid[m][n] = 2;
+                visited[m][n] = true;
+                q.push({m,n});
+                freshOranges--;
+            }
+        }
+    }
+    
+    return minutes;
+}
+
+
+void orangesRottingHelper(vector<vector<int>> &grid, int m, int n, int time){
+    
 }
