@@ -217,5 +217,12 @@ int Graph::orangesRotting(vector<vector<int>> &grid){
 
 
 void orangesRottingHelper(vector<vector<int>> &grid, int m, int n, int time){
-    
+    if(m < 0 || n < 0 || m > grid.size() - 1 || grid[0].size() - 1 || 
+        grid[m][n] > 1 || grid[m][n] < time)
+        return;
+
+    orangesRottingHelper(grid, m+1, n, grid[m][n]+1);
+    orangesRottingHelper(grid, m-1, n, grid[m][n]+1);
+    orangesRottingHelper(grid, m, n+1, grid[m][n]+1);
+    orangesRottingHelper(grid, m, n-1, grid[m][n]+1);
 }
