@@ -205,5 +205,5 @@ int Graph::orangesRotting(vector<vector<int>> &grid){
     }
 
     if(freshOrange > 0) return -1;
-    return minutes == 0? 0 : minutes;
+    return minutes == -1? 0 : minutes;
 }
