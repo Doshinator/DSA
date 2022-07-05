@@ -227,15 +227,15 @@ void Graph::wallsAndGates(vector<vector<int>> &rooms){
         for(int j = 0; j < rooms[0].size(); j++){
             if(rooms[i][j] == 0){
                 vector<vector<bool>> visited(rooms.size(), vector<bool>(rooms[0].size(), false));
-                wallsAndGatesHelper(rooms, res, i, j, 0);
+                wallsAndGatesHelper(rooms, res, visited, i, j, 0);
             }
         }
     }
 }
 
-void wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> &res,  int m, int n, int distance){
+void Graph::wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> &res, vector<vector<bool>> &visited, int m, int n, int distance){
     const int INF = 2147483647;
-    if(m < 0 || n < 0 || m > rooms.size() - 1 || n > rooms[0].size() - 1 || visited[m][n] || room[m][n] == -1)
+    if(m < 0 || n < 0 || m > rooms.size() - 1 || n > rooms[0].size() - 1 || visited[m][n] || rooms[m][n] == -1)
         return;
 
     if(distance >= res[m][n])
@@ -243,8 +243,8 @@ void wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> &res,  
     
     res[m][n] = distance;
     visited[m][n] = true;
-    wallsAndGatesHelper(rooms, res, m+1, n, distance + 1);
-    wallsAndGatesHelper(rooms, res, m-1, n, distance + 1);
-    wallsAndGatesHelper(rooms, res, m, n+1, distance + 1);
-    wallsAndGatesHelper(rooms, res, m, n-1, distance + 1);
+    wallsAndGatesHelper(rooms, res, visited, m+1, n, distance + 1);
+    wallsAndGatesHelper(rooms, res, visited, m-1, n, distance + 1);
+    wallsAndGatesHelper(rooms, res, visited, m, n+1, distance + 1);
+    wallsAndGatesHelper(rooms, res, visited, m, n-1, distance + 1);
 }
