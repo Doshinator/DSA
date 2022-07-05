@@ -207,3 +207,44 @@ int Graph::orangesRotting(vector<vector<int>> &grid){
     if(freshOrange > 0) return -1;
     return minutes == -1? 0 : minutes;
 }
+
+
+void Graph::wallsAndGates(vector<vector<int>> &rooms){
+    // Explanation:
+    // the 2D grid is:
+    // INF  -1  0  INF
+    // INF INF INF  -1
+    // INF  -1 INF  -1
+    //   0  -1 INF INF
+    // the answer is:
+    //   3  -1   0   1
+    //   2   2   1  -1
+    //   1  -1   2  -1
+    //   0  -1   3   4
+
+    vector<vector<int>> res (rooms.size(), vector<int>(rooms[0].size(), 2147483647));
+    for(int i = 0; i < rooms.size(); i++){
+        for(int j = 0; j < rooms[0].size(); j++){
+            if(rooms[i][j] == 0){
+                vector<vector<bool>> visited(rooms.size(), vector<bool>(rooms[0].size(), false));
+                wallsAndGatesHelper(rooms, res, i, j, 0);
+            }
+        }
+    }
+}
+
+void wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> &res,  int m, int n, int distance){
+    const int INF = 2147483647;
+    if(m < 0 || n < 0 || m > rooms.size() - 1 || n > rooms[0].size() - 1 || visited[m][n] || room[m][n] == -1)
+        return;
+
+    if(distance >= res[m][n])
+        return;
+    
+    res[m][n] = distance;
+    visited[m][n] = true;
+    wallsAndGatesHelper(rooms, res, m+1, n, distance + 1);
+    wallsAndGatesHelper(rooms, res, m-1, n, distance + 1);
+    wallsAndGatesHelper(rooms, res, m, n+1, distance + 1);
+    wallsAndGatesHelper(rooms, res, m, n-1, distance + 1);
+}
