@@ -39,4 +39,7 @@ class Graph{
     void surroundingRegionHelper(vector<vector<char>> &board, vector<vector<bool>> &visited, int m, int n);
 
     int orangesRotting(vector<vector<int>> &grid);
+    
+    void wallsAndGates(vector<vector<int>> &rooms);
+    void wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> &res, vector<vector<bool>> &visited, int m, int n, int distance);
 };
