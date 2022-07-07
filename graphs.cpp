@@ -253,36 +253,28 @@ bool Graph::courseScheduler(int numCourses, vector<vector<int>> &prerequisites){
     int cleared = 0;
     vector<vector<int>> graph(numCourses);
     vector<int> inDegree(numCourses);
-
+    // setting up adj list + indegree
     for(int i = 0; i < prerequisites.size(); i++){
         graph[prerequisites[i][1]].push_back(prerequisites[i][0]);
         inDegree[prerequisites[i][0]]++;
     }
-
+    // q init
     queue<int> q;
     for(int i = 0; i < inDegree.size(); i++){
         if(inDegree[i] == 0)
             q.push(i);
     }
-
+    //bfs
     while(!q.empty()){
-        cleared++;
+        int curr = q.front(); q.pop(); cleared++;
+        vector<int> neighbors = graph[curr];
+        for(int j = 0; j < neighbors.size(); j++){
+            inDegree[neighbors[j]]--;
 
-        for(int i = 0, n = q.size(); i < n; i++){
-            int curr = q.front();
-            q.pop();
-
-            vector<int> neighbors = graph[curr];
-            for(int j = 0; j < neighbors.size(); j++){
-                inDegree[neighbors[j]]--;
-
-                if(inDegree[neighbors[j]] == 0)
-                    q.push(neighbors[j]);
-            }
-
+            if(inDegree[neighbors[j]] == 0)
+                q.push(neighbors[j]);
         }
     }
-
     return numCourses == cleared? true : false;
 }
 
