@@ -278,9 +278,38 @@ bool Graph::courseScheduler(int numCourses, vector<vector<int>> &prerequisites){
     return numCourses == cleared? true : false;
 }
 
-void courseSchedulerHelper(int numCourses, vector<vector<int>> &prerequisites){
-    //dfs 
-    // push_back the last node or value into subset array
-    
+vector<int> findOrdercCourseSchedule(int numCourses, vector<vector<int>> &prerequisites){
+    vector<vector<int>> graph(numCourses);
+    vector<int> indegree(numCourses, 0);
+    vector<int> res;
+    int cleared = 0;
+    // input [[1,0],[2,0],[3,1],[3,2]]
+    // output [0,2,1,3]
+    for(int i = 0; i < prerequisites.size(); i++){
+        graph[prerequisites[i][1]].push_back(prerequisites[i][0]);
+        indegree[prerequisites[i][0]]++;
+    }
 
+    queue<int> q;
+    for(int i = 0; i < indegree.size(); i++){
+        if(indegree[i] == 0)
+            q.push(i);
+    }
+
+    while(!q.empty()){
+        int curr = q.front(); q.pop(); cleared++;
+        res.push_back(curr);
+        vector<int> neighbors = graph[curr];
+        for(int i = 0; i < neighbors.size(); i++){
+            indegree[neighbors[i]]--;
+            if(indegree[neighbors[i]] == 0)
+                q.push(neighbors[i]);
+        }
+
+    }
+
+    if(numCourses == cleared)
+        return res;
+
+    return {};
 }
