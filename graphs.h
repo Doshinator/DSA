@@ -42,4 +42,6 @@ class Graph{
     
     void wallsAndGates(vector<vector<int>> &rooms);
     void wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> &res, vector<vector<bool>> &visited, int m, int n, int distance);
+
+    bool courseScheduler(int numCourses, vector<vector<int>> &prerequisites);
 };

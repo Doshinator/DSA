@@ -1,6 +1,7 @@
 #include "graphs.h"
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
 #include <queue>
 
 using namespace std;
@@ -234,7 +235,6 @@ void Graph::wallsAndGates(vector<vector<int>> &rooms){
 }
 
 void Graph::wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> &res, vector<vector<bool>> &visited, int m, int n, int distance){
-    const int INF = 2147483647;
     if(m < 0 || n < 0 || m > rooms.size() - 1 || n > rooms[0].size() - 1 || visited[m][n] || rooms[m][n] == -1)
         return;
 
@@ -247,4 +247,48 @@ void Graph::wallsAndGatesHelper(vector<vector<int>> &rooms, vector<vector<int>> 
     wallsAndGatesHelper(rooms, res, visited, m-1, n, distance + 1);
     wallsAndGatesHelper(rooms, res, visited, m, n+1, distance + 1);
     wallsAndGatesHelper(rooms, res, visited, m, n-1, distance + 1);
+}
+
+bool Graph::courseScheduler(int numCourses, vector<vector<int>> &prerequisites){
+    int cleared = 0;
+    vector<vector<int>> graph(numCourses);
+    vector<int> inDegree(numCourses);
+
+    for(int i = 0; i < prerequisites.size(); i++){
+        graph[prerequisites[i][1]].push_back(prerequisites[i][0]);
+        inDegree[prerequisites[i][0]]++;
+    }
+
+    queue<int> q;
+    for(int i = 0; i < inDegree.size(); i++){
+        if(inDegree[i] == 0)
+            q.push(i);
+    }
+
+    while(!q.empty()){
+        cleared++;
+
+        for(int i = 0, n = q.size(); i < n; i++){
+            int curr = q.front();
+            q.pop();
+
+            vector<int> neighbors = graph[curr];
+            for(int j = 0; j < neighbors.size(); j++){
+                inDegree[neighbors[j]]--;
+
+                if(inDegree[neighbors[j]] == 0)
+                    q.push(neighbors[j]);
+            }
+
+        }
+    }
+
+    return numCourses == cleared? true : false;
+}
+
+void courseSchedulerHelper(int numCourses, vector<vector<int>> &prerequisites){
+    //dfs 
+    // push_back the last node or value into subset array
+    
+
 }
