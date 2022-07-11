@@ -220,7 +220,8 @@ vector<vector<string>> BackTracking::solveNQueens(int n){
     // Input: n = 4
     // Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
     vector<vector<string>> ans;
-    vector<string> subset;
+    vector<string> board(n, string(n, '.'));
+    solveQueensHelper(ans, board, n, 0);
 
     return ans;
 }
