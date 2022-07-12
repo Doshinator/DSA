@@ -315,9 +315,7 @@ vector<int> findOrdercCourseSchedule(int numCourses, vector<vector<int>> &prereq
 }
 
 vector<int> Graph::findRedundantConnection(vector<vector<int>> &edges){
-    vector<int> parent; parent.push_back(-1); 
-    for(int i = 0; i < edges.size(); i++)
-        parent.push_back(-1);
+    vector<int> parent(edges.size() + 1, -1);
 
 
     return {};
