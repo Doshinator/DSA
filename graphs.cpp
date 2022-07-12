@@ -319,5 +319,6 @@ vector<int> Graph::findRedundantConnection(vector<vector<int>> &edges){
     for(int i = 0; i < edges.size(); i++)
         parent.push_back(-1);
 
-    
+
+    return {};
 }
