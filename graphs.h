@@ -46,4 +46,6 @@ class Graph{
     bool courseScheduler(int numCourses, vector<vector<int>> &prerequisites);
 
     vector<int> findOrdercCourseSchedule(int numCourses, vector<vector<int>> &prerequisites);
+
+    vector<int> findRedundantConnection(vector<vector<int>> &edges);
 };
