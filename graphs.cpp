@@ -313,3 +313,36 @@ vector<int> findOrdercCourseSchedule(int numCourses, vector<vector<int>> &prereq
 
     return {};
 }
+
+vector<int> Graph::findRedundantConnection(vector<vector<int>> &edges){
+    // setup parent array 
+    vector<int> parent(edges.size() + 1, -1);
+    
+
+    for(int i = 0; i < edges.size(); i++){
+        int u = edges[i][0];
+        int v = edges[i][1];
+
+    }
+
+
+    return {};
+}
+
+
+int Graph::find(vector<int> &parent, int v){
+    // [-1,-1,-1] - init
+    // [-1, 1, 2] 
+    //   1  2  3
+    if(parent[v] == -1)
+        return v;
+
+    parent[v] = find(parent, parent[parent[v]]);
+    return parent[v];
+}
+
+
+void Graph::_union(int u, int v){
+    
+}
+
