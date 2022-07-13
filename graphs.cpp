@@ -340,7 +340,7 @@ int Graph::find(vector<int> &parent, int v){
     if(parent[v] == -1)
         return v;
 
-    parent[v] = find(parent, parent[parent[v]]);
+    parent[v] = find(parent, parent[v]);
     return parent[v];
 }
 
