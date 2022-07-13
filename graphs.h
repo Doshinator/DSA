@@ -48,4 +48,6 @@ class Graph{
     vector<int> findOrdercCourseSchedule(int numCourses, vector<vector<int>> &prerequisites);
 
     vector<int> findRedundantConnection(vector<vector<int>> &edges);
+    int find(vector<int> &parent, int v);
+    void _union(int u, int v);
 };
