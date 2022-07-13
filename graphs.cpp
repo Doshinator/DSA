@@ -320,11 +320,14 @@ vector<int> Graph::findRedundantConnection(vector<vector<int>> &edges){
     
 
     for(int i = 0; i < edges.size(); i++){
-        int u = edges[i][0];
-        int v = edges[i][1];
+        int u = Graph::find(parent, edges[i][0]);
+        int v = Graph::find(parent, edges[i][1]);
 
+        if(u == v)
+            return {edges[i][0], edges[i][1]};
     }
 
+    Graph::_union(parent, u, v);
 
     return {};
 }
@@ -342,7 +345,11 @@ int Graph::find(vector<int> &parent, int v){
 }
 
 
-void Graph::_union(int u, int v){
+void Graph::_union(vector<int> &parent, int u, int v){
+    int absolute_path_u = Graph::find(parent, u);
+    int absolute_path_v = Graph::find(parent, v);
     
+    if(absolute_path_u != absolute_path_v)
+        parent[u] = v;
 }
 
