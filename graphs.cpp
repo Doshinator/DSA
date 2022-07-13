@@ -346,10 +346,6 @@ int Graph::find(vector<int> &parent, int v){
 
 
 void Graph::_union(vector<int> &parent, int u, int v){
-    int absolute_root_u = Graph::find(parent, u);
-    int absolute_root_v = Graph::find(parent, v);
-    
-    if(absolute_root_u != absolute_root_v)
-        parent[u] = v;
+    parent[u] = v;
 }
 
