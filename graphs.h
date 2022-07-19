@@ -50,4 +50,6 @@ class Graph{
     vector<int> findRedundantConnection(vector<vector<int>> &edges);
     int find(vector<int> &parent, int v);
     void _union(vector<int> &parent, int u, int v);
+
+    int minCostConnectPoints(vector<vector<int>> &points);
 };
