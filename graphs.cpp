@@ -366,7 +366,7 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
         
             
     
-    sort(adj.begin(), adj.end());
+    sort(adj.begin(), adj.end()); // sort causes TLE in LC - use min heap instead
     
     int res = 0;
     
