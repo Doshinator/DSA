@@ -4,6 +4,7 @@
 #include <unordered_set>
 #include <queue>
 
+
 using namespace std;
 
 
@@ -320,14 +321,14 @@ vector<int> Graph::findRedundantConnection(vector<vector<int>> &edges){
     
 
     for(int i = 0; i < edges.size(); i++){
-        int u = Graph::find(parent, edges[i][0]);
-        int v = Graph::find(parent, edges[i][1]);
+        int absolute_root_u = Graph::find(parent, edges[i][0]);
+        int absolute_root_v = Graph::find(parent, edges[i][1]);
 
-        if(u == v)
+        if(absolute_root_u == absolute_root_v)
             return {edges[i][0], edges[i][1]};
-    }
 
-    Graph::_union(parent, u, v);
+        Graph::_union(parent, absolute_root_u, absolute_root_v);    
+    }
 
     return {};
 }
@@ -349,3 +350,36 @@ void Graph::_union(vector<int> &parent, int u, int v){
     parent[u] = v;
 }
 
+
+int Graph::minCostConnectPoints(vector<vector<int>> &points){
+    // Input: points = [[0,0],[2,2],[3,10],[5,2],[7,0]]
+    // Output: 20
+    // |xi - xj| + |yi - yj| = manhatten distance
+    int n = points.size();
+    vector<int> parent(points.size(), -1);
+
+    vector<vector<int>> adj; 
+    for(int i = 0; i < n; i++)
+        for(int j = i + 1; j < n; j++)
+            adj.push_back({ abs(points[i][0] - points[j][0]) + 
+                            abs(points[i][1] - points[j][1]), i, j});
+        
+            
+    
+    sort(adj.begin(), adj.end());
+    
+    int res = 0;
+    
+    for(int i = 0; i < adj.size(); i++){
+        int weight = adj[i][0];
+        int absolute_root_u = find(parent, adj[i][1]);
+        int absolute_root_v = find(parent, adj[i][2]);
+        
+        if(absolute_root_u == absolute_root_v)
+            continue;
+
+        _union(parent, absolute_root_u, absolute_root_v);
+        res += weight;
+    }
+    return res;
+}
