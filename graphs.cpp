@@ -383,3 +383,30 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
     }
     return res;
 }
+
+int networkDelayTime(vector<vector<int>> &times, int n, int k){
+    // Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+    // Output: 2
+    
+    // adj list [{target, weight}, {target, weight}] index = source node
+    vector<vector<pair<int,int>>> adj(n + 1);
+    for(int i = 0; i < times.size(); i++)
+        adj[times[i][0]].push_back({times[i][1], times[i][2]});
+
+    vector<int> dis(n+1); // [inf, inf, inf, inf, k = 0, inf]
+    dis[k] = 0;
+
+    vector<bool> vis(n+1, false); // [f, f, f, f]
+
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> q;
+    q.push({0, k});
+
+    while(!q.empty()){
+       pair<int,int> curr = q.top(); q.pop();
+       int s = curr.second;
+       visited[s] = true;
+
+       
+
+    }
+}
