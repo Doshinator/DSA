@@ -366,7 +366,7 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
         
             
     
-    sort(adj.begin(), adj.end());
+    sort(adj.begin(), adj.end()); // sort causes TLE in LC - use min heap instead
     
     int res = 0;
     
@@ -382,4 +382,46 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
         res += weight;
     }
     return res;
+}
+
+int networkDelayTime(vector<vector<int>> &times, int n, int k){
+    // Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+    // Output: 2
+    
+    // adj list [{target, weight}, {target, weight}] index = source node
+    vector<vector<pair<int,int>>> adj(n + 1);
+    for(int i = 0; i < times.size(); i++)
+        adj[times[i][0]].push_back({times[i][1], times[i][2]});
+
+    vector<int> dis(n+1, INT_MAX); // [inf, inf, inf, inf, k = 0, inf]
+    dis[k] = 0;
+
+    vector<bool> visited(n+1, false); // [f, f, f, f]
+
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> q;
+    q.push({0, k});
+
+    while(!q.empty()){
+        pair<int,int> curr = q.top(); q.pop();
+        int u = curr.second;
+        visited[u] = true;
+
+        for(int i = 0; i < adj[u].size(); i++){
+            int v = adj[u][i].first;
+            int weight = adj[u][i].second;
+
+            if(!visited[v] && dis[u] + weight < dis[v]){
+                dis[v] = dis[u] + weight;
+                q.push({dis[v], v});
+            }
+        }
+    }
+
+    int ans = 0;
+    for(int i = 1; i < dis.size(); i++){
+        ans = max(ans, dis[i]);
+    }
+
+    
+    return ans == INT_MAX? -1 : ans;
 }

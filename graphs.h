@@ -52,4 +52,5 @@ class Graph{
     void _union(vector<int> &parent, int u, int v);
 
     int minCostConnectPoints(vector<vector<int>> &points);
+    int networkDelayTime(vector<vector<int>> &times, int n, int k);
 };
