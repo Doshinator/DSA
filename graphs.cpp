@@ -387,41 +387,48 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
 int networkDelayTime(vector<vector<int>> &times, int n, int k){
     // Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
     // Output: 2
+
+    // init visited set
+    vector<bool> visited(n + 1, false);
+    // init distance 
+    vector<int> distance(n + 1, INT_MAX);
+    distance[k] = 0; // src node 0;
     
-    // adj list [{target, weight}, {target, weight}] index = source node
-    vector<vector<pair<int,int>>> adj(n + 1);
-    for(int i = 0; i < times.size(); i++)
-        adj[times[i][0]].push_back({times[i][1], times[i][2]});
+    // init neighbor / adj list - mapping node u -> v
+    vector<vector<pair<int,int>>> neighbors(n+1);
+    for(int i = 0; i < times.size(); i++){
+        int u = times[i][0];
+        int v = times[i][1];
+        int w = times[i][2];
+        neighbors[u].push_back({v, w});
+    }
+        
 
-    vector<int> dis(n+1, INT_MAX); // [inf, inf, inf, inf, k = 0, inf]
-    dis[k] = 0;
-
-    vector<bool> visited(n+1, false); // [f, f, f, f]
-
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> q;
+    // init q
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+    // sort by distance in the prio q
     q.push({0, k});
 
+    // bfs
     while(!q.empty()){
         pair<int,int> curr = q.top(); q.pop();
         int u = curr.second;
         visited[u] = true;
 
-        for(int i = 0; i < adj[u].size(); i++){
-            int v = adj[u][i].first;
-            int weight = adj[u][i].second;
+        for(int i = 0; i < neighbors[u].size(); i++){
+            int v = neighbors[u][i].first;
+            int w = neighbors[u][i].second;
 
-            if(!visited[v] && dis[u] + weight < dis[v]){
-                dis[v] = dis[u] + weight;
-                q.push({dis[v], v});
+            if(!visited[v] && distance[u] + w < distance[v]){
+                distance[v] = distance[u] + w;
+                q.push({distance[v], v});
             }
         }
     }
 
     int ans = 0;
-    for(int i = 1; i < dis.size(); i++){
-        ans = max(ans, dis[i]);
+    for(int i = 1; i < distance.size(); i++){
+        ans = max(ans, distance[i]);
     }
-
-    
     return ans == INT_MAX? -1 : ans;
 }
