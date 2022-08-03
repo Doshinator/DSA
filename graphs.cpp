@@ -359,6 +359,7 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
     vector<int> parent(points.size(), -1);
 
     vector<vector<int>> adj; 
+    // [w, u, v], [w, u, v] ...
     for(int i = 0; i < n; i++)
         for(int j = i + 1; j < n; j++)
             adj.push_back({ abs(points[i][0] - points[j][0]) + 
@@ -369,7 +370,7 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
     sort(adj.begin(), adj.end()); // sort causes TLE in LC - use min heap instead
     
     int res = 0;
-    
+    // weight 0, 1, 2.. sorted and union them (greedy)
     for(int i = 0; i < adj.size(); i++){
         int weight = adj[i][0];
         int absolute_root_u = find(parent, adj[i][1]);
