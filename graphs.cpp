@@ -477,15 +477,18 @@ int Graph::findCheapestPrice(int n, vector<vector<int>>& flights, int src, int d
      *          BELLMAN-FORD - working
      * */
 
-    vector<int> c(n, 1e8);
-    c[src] = 0;
+    vector<int> dist(n, 1e8);
+    dist[src] = 0;
 
     for(int i = 0; i <= k; i++){
-        vector<int> C(c);
-        for(auto flight : flights)
-            C[flight[1]] = min(C[flight[1]], c[flight[0]] + flight[2]);
-        
-        c = C;
+        vector<int> temp(dist);
+        for(auto flight : flights){
+            int u = flight[0];
+            int v = flight[1];
+            int w = flight[2];
+            temp[v] = min(temp[v] , dist[u] + w);
+        }
+        dist = temp;
     }
-    return c[dst] == 1e8? -1 : c[dst];
+    return dist[dst] == 1e8? -1 : dist[dst];
 }
