@@ -1,13 +1,20 @@
-    #include "dp.h"
+#include "dp.h"
 #include <vector>
 
 
 int DP::climbStairs(int n){
-    vector<int> steps(n, 0);
-    steps[0] = 1;
-    steps[1] = 2;
-    for(int i = 2; i <= n; i++){
-        steps[i] = steps[i - 1] + steps[i - 2];
-    }
-    return steps[n - 1];
+    if(memoClimbStairs.find(n) != memoClimbStairs.end()) return memoClimbStairs[n];
+    memoClimbStairs[n] = climbStairs(n - 1) + climbStairs(n - 2);
+    return memoClimbStairs[n];
 }
+
+
+int DP::minCostClimbingStairs(vector<int> &cost){
+    // Input: cost = [10,15,20]
+    // Output: 15
+
+    
+    
+    
+}
+

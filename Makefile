@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -c -std=c++14
+CFLAGS = -c -std=c++17
 all: main
 
 main: main.o array.o test.o two_ptr.o sliding_window.o stack.o binary_search.o linked_list.o trees.o trie.o heap.o backtracking.o graphs.o dp.o

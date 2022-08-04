@@ -385,7 +385,7 @@ int Graph::minCostConnectPoints(vector<vector<int>> &points){
     return res;
 }
 
-int networkDelayTime(vector<vector<int>> &times, int n, int k){
+int Graph::networkDelayTime(vector<vector<int>> &times, int n, int k){
     // Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
     // Output: 2
 
@@ -432,4 +432,60 @@ int networkDelayTime(vector<vector<int>> &times, int n, int k){
         ans = max(ans, distance[i]);
     }
     return ans == INT_MAX? -1 : ans;
+}
+
+
+int Graph::findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k){
+    
+    /**
+     *          DIJKSTRA - passes intial test case
+     * */
+    
+    // vector<vector<pair<int,int>>> adj(n+1);
+    // for(int i = 0; i < flights.size(); i++)
+    //     adj[flights[i][0]].push_back({flights[i][1], flights[i][2]});
+
+    // vector<int> dist(n + 1, INT_MAX);
+    // dist[src] = 0;
+    // vector<int> stops(n + 1, INT_MAX);
+    // stops[src] = 0;
+
+    // priority_queue<tuple<int,int,int>, vector<tuple<int,int,int>>, greater<tuple<int,int,int>>> q;
+    // q.push({0, src, 0});
+
+
+    // while(!q.empty()){
+    //     auto[currDist, u, currStop] = q.top(); q.pop();
+
+    //     if(u == dst) return currDist;
+    //     if(currStop == k + 1) continue;
+
+    //     for(int i = 0; i < adj[u].size(); i++){
+    //         int v = adj[u][i].first;
+    //         int w = adj[u][i].second;
+
+    //         if(dist[u] + w < dist[v] || stops[u] + 1 < stops[v]){
+    //             stops[v] = stops[u] + 1;
+    //             dist[v] = dist[u] + w;
+    //             q.push({dist[v], v, stops[v]});
+    //         }
+    //     }
+    // }
+    // return -1;
+
+    /**
+     *          BELLMAN-FORD - working
+     * */
+
+    vector<int> c(n, 1e8);
+    c[src] = 0;
+
+    for(int i = 0; i <= k; i++){
+        vector<int> C(c);
+        for(auto flight : flights)
+            C[flight[1]] = min(C[flight[1]], c[flight[0]] + flight[2]);
+        
+        c = C;
+    }
+    return c[dst] == 1e8? -1 : c[dst];
 }

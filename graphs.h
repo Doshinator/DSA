@@ -53,4 +53,6 @@ class Graph{
 
     int minCostConnectPoints(vector<vector<int>> &points);
     int networkDelayTime(vector<vector<int>> &times, int n, int k);
+
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k);
 };
