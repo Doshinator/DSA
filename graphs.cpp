@@ -486,7 +486,7 @@ int Graph::findCheapestPrice(int n, vector<vector<int>>& flights, int src, int d
             int u = flight[0];
             int v = flight[1];
             int w = flight[2];
-            temp[v] = min(temp[v] , dist[u] + w);
+            temp[v] = min(temp[v] , dist[u] + w); // if(dist[u] + w < dist[v]) .... update dist[v] = dist[u] + w
         }
         dist = temp;
     }

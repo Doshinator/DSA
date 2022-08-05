@@ -12,9 +12,6 @@ int DP::climbStairs(int n){
 int DP::minCostClimbingStairs(vector<int> &cost){
     // Input: cost = [10,15,20]
     // Output: 15
-
-    
-    
     
 }
 
