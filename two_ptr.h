@@ -13,6 +13,7 @@ class TWO_PTR{
     vector<vector<int>> threeSum(vector<int> nums);
     int maxArea(vector<int> height);
     int trap(vector<int> height);
+    int totalFruit(vector<int> &fruits);
 };
 
 
