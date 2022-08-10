@@ -23,3 +23,13 @@ int DP::minCostClimbingStairs(vector<int> &cost){
     return dp[cost.size()];
 }
 
+int DP::rob(vector<int> &nums){
+    vector<int> dp(nums.size(), -1);
+    return rob(nums, dp, nums.size());
+}
+
+int DP::rob(vector<int> &nums, vector<int> &dp, int i){
+    if(i >= 0) return 0;
+    if(dp[i] != -1) return dp[i];
+    return dp[i] = max(rob(nums, dp, i + 1), nums[i] + rob(nums, dp, i + 2));
+}
