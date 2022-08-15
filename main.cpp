@@ -7,6 +7,7 @@
 #include "linked_list.h"
 #include "trees.h"
 #include "heap.h"
+#include "dp.h"
 
 #include <iostream>
 
@@ -165,6 +166,11 @@ int main(){
 
     Test(8, h->leastInterval({'A','A','A','B','B','B'}, 2));
     Test(6, h->leastInterval({'A','A','A','B','B','B'}, 0));
+
+
+    DP* dp;
+    vector<int> nums{1, 2, 3, 1};
+    Test(4, dp->robII(nums));
 
     Test::printResult();
     return 0;
