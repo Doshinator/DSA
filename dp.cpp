@@ -27,7 +27,7 @@ int DP::minCostClimbingStairs(vector<int> &cost){
 // memo
 int DP::rob(vector<int> &nums){
     vector<int> dp(nums.size(), -1);
-    return robMemo(nums, dp, nums.size());
+    return DP::robMemo(nums, dp, nums.size());
 }
 
 int DP::robTabulation(vector<int> &nums){
@@ -37,7 +37,7 @@ int DP::robTabulation(vector<int> &nums){
     vector<int> dp(nums);
     dp[1] = max(nums[0], nums[1]);
     for(int i = 2; i < n; i++){
-        dp[i] = max(dp[i-1], dp[i-2] + nums[i]);
+        dp[i] = max(dp[i-2] + nums[i], dp[i-1]);
     }
     return dp[n-1];
 }
@@ -50,13 +50,13 @@ int DP::robMemo(vector<int> &nums, vector<int> &dp, int i){
 
 int DP::robII(vector<int> &nums){
     int n = nums.size();
-    vector<int> dp(nums.size());
-    if(nums.size() == 1) return nums[0];
+    if(n == 1) return nums[0];
 
-    dp[1] = max(nums[0], nums[1]);
-    for(int i = 0; i < n; i++){
+    // include the n[0] and don't include last  n[0...n-1] 
+    // don't include n[0] and include last      n[1...n]   
+    // take max
+    vector<int> nums1(nums.begin()+1, nums.end());
+    vector<int> nums2(nums.begin(), nums.end()-1);
 
-    }
-
-    return dp[n];
+    return max(DP::robTabulation(nums1), DP::robTabulation(nums2));
 }
