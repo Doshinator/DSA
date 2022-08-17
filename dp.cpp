@@ -73,27 +73,24 @@ string DP::longestPalindromeTwoPtr(string s){
         while(l >= 0 && r < s.size() && s[l] == s[r]){
             // check for potential new result string and result length & update
             if(r - l + 1 > resultLength){
-                res_l = l; 
-                res_r = r;
+                res = s.substr(l, r - l + 1);
                 resultLength = r - l + 1;
             }
-            l++;
-            r--;
+            l--;
+            r++;
         }
         // even case
         l = i, r = i + 1;
         while(l >= 0 && r < s.size() && s[l] == s[r]){
             // check for potential new reult stirng and result length & update
             if(r - l + 1 > resultLength){
-                res_l = l; 
-                res_r = r;
+                res = s.substr(l, r - l + 1);
                 resultLength = r - l + 1;
             }
-            l++;
-            r--;
+            l--;
+            r++;
         }
     }
-    // res[res_l : res_r];
     return res;
 }
 
