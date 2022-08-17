@@ -1,5 +1,5 @@
 #include "dp.h"
-#include <vector>
+
 
 
 int DP::climbStairs(int n){
@@ -59,4 +59,36 @@ int DP::robII(vector<int> &nums){
     vector<int> nums2(nums.begin(), nums.end()-1);
 
     return max(DP::robTabulation(nums1), DP::robTabulation(nums2));
+}
+
+string DP::longestPalindromeTwoPtr(string s){
+    // babad
+    string res = "";
+    int resultLength = 0;
+
+    for(int i = 0; i < s.size(); i++){
+        int l = i, r = i;
+        // odd case
+        while( (l >= 0 || r < s.size()) && s[l] == s[r]){
+            // check for potential new result string and result length & update
+            if(r - l + 1 > resultLength){
+                res = s.substr(l, r);
+                resultLength = r - l + 1;
+            }
+            l++;
+            r--;
+        }
+        // even case
+        l = i, r = i + 1;
+        while( (l >= 0 || r < s.size()) && s[l] == s[r]){
+            // check for potential new reult stirng and result length & update
+            if(r - l + 1 > resultLength){
+                res = s.substr(l, r);
+                resultLength = r - l + 1;
+            }
+            l++;
+            r--;
+        }
+    }
+    return res;
 }

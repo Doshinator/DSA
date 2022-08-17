@@ -1,5 +1,6 @@
 #include <vector>
 #include <unordered_map>
+#include <string>
 using namespace std;
 
 class DP{
@@ -12,7 +13,9 @@ class DP{
     int robMemo(vector<int> &nums, vector<int> &dp, int i);
 
     int robII(vector<int> &nums);
-
+    
+    string longestPalindromeTwoPtr(string s);
+    
     private:
     unordered_map<int, int> memoClimbStairs{{1, 1}, {2, 2}};
 };
