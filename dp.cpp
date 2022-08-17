@@ -64,31 +64,41 @@ int DP::robII(vector<int> &nums){
 string DP::longestPalindromeTwoPtr(string s){
     // babad
     string res = "";
+    int res_l = 0, res_r = 0;
     int resultLength = 0;
 
     for(int i = 0; i < s.size(); i++){
         int l = i, r = i;
         // odd case
-        while( (l >= 0 || r < s.size()) && s[l] == s[r]){
+        while(l >= 0 && r < s.size() && s[l] == s[r]){
             // check for potential new result string and result length & update
             if(r - l + 1 > resultLength){
-                res = s.substr(l, r);
+                res = s.substr(l, r - l + 1);
                 resultLength = r - l + 1;
             }
-            l++;
-            r--;
+            l--;
+            r++;
         }
         // even case
         l = i, r = i + 1;
-        while( (l >= 0 || r < s.size()) && s[l] == s[r]){
+        while(l >= 0 && r < s.size() && s[l] == s[r]){
             // check for potential new reult stirng and result length & update
             if(r - l + 1 > resultLength){
-                res = s.substr(l, r);
+                res = s.substr(l, r - l + 1);
                 resultLength = r - l + 1;
             }
-            l++;
-            r--;
+            l--;
+            r++;
         }
     }
     return res;
+}
+
+
+string DP::longestPalindromeTabulation(string s){
+    vector<vector<int>> dp(s.size(), vector<int>(s.size()));
+    
+
+
+    return "";
 }

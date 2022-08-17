@@ -15,6 +15,7 @@ class DP{
     int robII(vector<int> &nums);
     
     string longestPalindromeTwoPtr(string s);
+    string longestPalindromeTabulation(string s);
     
     private:
     unordered_map<int, int> memoClimbStairs{{1, 1}, {2, 2}};
