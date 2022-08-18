@@ -64,7 +64,7 @@ int DP::robII(vector<int> &nums){
 string DP::longestPalindromeTwoPtr(string s){
     // babad
     string res = "";
-    int res_l = 0, res_r = 0;
+    // int res_l = 0, res_r = 0;
     int resultLength = 0;
 
     for(int i = 0; i < s.size(); i++){
@@ -74,6 +74,8 @@ string DP::longestPalindromeTwoPtr(string s){
             // check for potential new result string and result length & update
             if(r - l + 1 > resultLength){
                 res = s.substr(l, r - l + 1);
+                // res_l = l;
+                // res_r = r;
                 resultLength = r - l + 1;
             }
             l--;
@@ -85,20 +87,34 @@ string DP::longestPalindromeTwoPtr(string s){
             // check for potential new reult stirng and result length & update
             if(r - l + 1 > resultLength){
                 res = s.substr(l, r - l + 1);
+                // res_l = l;
+                // res_r = r;
                 resultLength = r - l + 1;
             }
             l--;
             r++;
         }
     }
+    // return s.substr(res_l, res_r - res_l + 1); - saves memory and time
     return res;
 }
 
 
 string DP::longestPalindromeTabulation(string s){
-    vector<vector<int>> dp(s.size(), vector<int>(s.size()));
+    int n = s.size();
+    vector<vector<int>> dp(n, vector<int>(n));
     
+    // set up dp table
+    for(int i = 0; i < n; i++)
+        dp[i][i] = 1;
 
+    for(int i = 0; i < n - 1; i++)
+        s[i] == s[i+1]? dp[i][i+1] =  1 : dp[i][i+1] = 0;
+
+    // 0 - 2, 1 - 3, 2 - 4, 3 - 5
+    for(int i = 0; i < n; i++){
+
+    }
 
     return "";
 }
