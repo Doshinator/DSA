@@ -101,16 +101,20 @@ string DP::longestPalindromeTwoPtr(string s){
 
 
 string DP::longestPalindromeTabulation(string s){
-    vector<vector<int>> dp(s.size(), vector<int>(s.size()));
+    int n = s.size();
+    vector<vector<int>> dp(n, vector<int>(n));
     
     // set up dp table
-    for(int i = 0; i < s.size(); i++)
+    for(int i = 0; i < n; i++)
         dp[i][i] = 1;
 
-    for(int i = 0; i < s.size() - 1; i++)
+    for(int i = 0; i < n - 1; i++)
         s[i] == s[i+1]? dp[i][i+1] =  1 : dp[i][i+1] = 0;
 
-    
+    // 0 - 2, 1 - 3, 2 - 4, 3 - 5
+    for(int i = 0; i < n; i++){
+
+    }
 
     return "";
 }
