@@ -16,6 +16,10 @@ class DP{
     
     string longestPalindromeTwoPtr(string s);
     string longestPalindromeTabulation(string s);
+
+    int countSubstrings(string s);
+    int countSubstringsMemoization(string s);
+    int countSubstringsTabulation(string s);
     
     private:
     unordered_map<int, int> memoClimbStairs{{1, 1}, {2, 2}};
