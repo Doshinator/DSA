@@ -111,10 +111,7 @@ string DP::longestPalindromeTabulation(string s){
     for(int i = 0; i < n - 1; i++)
         s[i] == s[i+1]? dp[i][i+1] =  1 : dp[i][i+1] = 0;
 
-    // 0 - 2, 1 - 3, 2 - 4, 3 - 5
-    for(int i = 0; i < n; i++){
-
-    }
+    // finish rest of tabulation method
 
     return "";
 }
