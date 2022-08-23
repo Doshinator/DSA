@@ -157,9 +157,9 @@ bool DP::canJumpRecurse(vector<int> &nums, int index){
     if(index == nums.size() - 1)
         return true;
     
-    int steps = i + nums[index];
-    for(int i = index; i <= steps; i++){
-        if(canJumpHelper(nums, i + 1))
+    int steps = index + nums[index];
+    for(int i = index + 1; i <= steps; i++){
+        if(canJumpHelper(nums, i))
             return true;
     }
     return false;
