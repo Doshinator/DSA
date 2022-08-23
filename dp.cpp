@@ -145,3 +145,21 @@ int DP::countSubstringsMemoization(string s){
 int DP::countSubstringsTabulation(string s){
 
 }
+
+
+bool DP::canJump(vector<int> &nums){
+    //[2,3,1,1,4] -> t
+    //[3,2,1,0,4] -> f
+    return DP::canJumpHelper(nums, 0);
+}
+
+bool DP::canJumpHelper(vector<int> &nums, int index){
+    if(index == nums.size() - 1)
+        return true;
+    
+    int steps = i + nums[index];
+    for(int i = index; i <= steps; i++){
+        canJumpHelper(nums, i + 1);
+    }
+    return false;
+}
