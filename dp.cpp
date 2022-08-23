@@ -112,6 +112,7 @@ string DP::longestPalindromeTabulation(string s){
         s[i] == s[i+1]? dp[i][i+1] =  1 : dp[i][i+1] = 0;
 
     // finish rest of tabulation method
+    // f(i,j) = dp[i+1][j-1] == 1? && s[i] == s[j]? else 0
 
     return "";
 }
