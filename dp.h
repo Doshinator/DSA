@@ -22,7 +22,7 @@ class DP{
     int countSubstringsTabulation(string s);
 
     bool canJump(vector<int> &nums);
-    bool canJumpHelper(vector<int> &nums, int index);
+    bool canJumpRecurse(vector<int> &nums, int index);
 
     private:
     unordered_map<int, int> memoClimbStairs{{1, 1}, {2, 2}};
