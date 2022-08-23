@@ -153,13 +153,14 @@ bool DP::canJump(vector<int> &nums){
     return DP::canJumpHelper(nums, 0);
 }
 
-bool DP::canJumpHelper(vector<int> &nums, int index){
+bool DP::canJumpRecurse(vector<int> &nums, int index){
     if(index == nums.size() - 1)
         return true;
     
     int steps = i + nums[index];
     for(int i = index; i <= steps; i++){
-        canJumpHelper(nums, i + 1);
+        if(canJumpHelper(nums, i + 1))
+            return true;
     }
     return false;
 }
