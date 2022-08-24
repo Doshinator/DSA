@@ -314,3 +314,17 @@ int TREES::maxPathSumHelper(TreeNode* root, int &ans){
     return root->val + max(l, r);
 }
 
+
+int TREES::sumNumbers(TreeNode* root){
+    return sumNumbersHelper(root, 0);
+}
+
+int TREES::sumNumbersHelper(TreeNode* root, int curr){
+    curr = curr * 10 + root->val;
+    if(!root)
+        return 0;
+    if(!root->left && !root->right)
+        return curr;
+        
+    return sumNumbersHelper(root->left, curr) + sumNumbersHelper(root->right, curr);
+}

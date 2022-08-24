@@ -44,6 +44,9 @@ class TREES{
     TreeNode* buildTreeHelper(vector<int> &preorder, unordered_map<int, int> &m, int &index, int l, int r); 
     int maxPathSum(TreeNode* root);
     int maxPathSumHelper(TreeNode* root, int &ans);
+    
+    int sumNumbers(TreeNode* root);
+    int sumNumbersHelper(TreeNode* root)
 };
 
 
