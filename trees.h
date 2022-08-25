@@ -46,7 +46,7 @@ class TREES{
     int maxPathSumHelper(TreeNode* root, int &ans);
     
     int sumNumbers(TreeNode* root);
-    int sumNumbersHelper(TreeNode* root)
+    int sumNumbersHelper(TreeNode* root, int num);
 };
 
 

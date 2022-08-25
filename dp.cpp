@@ -150,7 +150,7 @@ int DP::countSubstringsTabulation(string s){
 bool DP::canJump(vector<int> &nums){
     //[2,3,1,1,4] -> t
     //[3,2,1,0,4] -> f
-    return DP::canJumpHelper(nums, 0);
+    return canJumpRecurse(nums, 0);
 }
 
 bool DP::canJumpRecurse(vector<int> &nums, int index){
@@ -159,7 +159,7 @@ bool DP::canJumpRecurse(vector<int> &nums, int index){
     
     int steps = index + nums[index];
     for(int i = index + 1; i <= steps; i++){
-        if(canJumpHelper(nums, i))
+        if(canJumpRecurse(nums, i))
             return true;
     }
     return false;
