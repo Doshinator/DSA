@@ -167,3 +167,37 @@ double MedianFinder::findMedian(){
 
     return minHeap.size() < maxHeap.size()? maxHeap.top() : minHeap.top();
 }
+
+vector<int> Heap::mergeKSortedArray(vector<vector<int>> &nums){
+    /* Input
+    [
+        [1,2,3,4],
+        [3,5,7].
+        [4,6,8]
+    ]
+    */ 
+    // out = [1,2,3,3,4,4,5,6,7,8]
+    vector<int> res;
+    int k = nums.size();
+    priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> q;
+    
+    for(int i = 0; i < k; i++)
+        q.push({nums[i][0], 0, i});
+
+    while(!q.empty()){
+        vector<int> data = q.top(); q.pop();
+        int element = data[0];
+        int index = data[1];
+        int row = data[2];
+        
+        res.push_back(element);
+
+        int next_index = index + 1;
+        int next_element = nums[row][next_index];
+        
+        if(next_index < nums[row].size())
+            q.push({next_element, next_index, row});
+        
+    }
+    return res;
+}

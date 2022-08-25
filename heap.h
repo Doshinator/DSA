@@ -13,7 +13,8 @@ class Heap{
     int lastStoneWeight(vector<int> stones);
     vector<vector<int>> kClosest(vector<vector<int>> points, int k);
     int findKthLargest(vector<int> nums, int k);
-    int leastInterval(vector<char> tasks, int n);    
+    int leastInterval(vector<char> tasks, int n);
+    vector<int> mergeKSortedArray(vector<vector<int>> &nums);  
 
     
     struct compare{
