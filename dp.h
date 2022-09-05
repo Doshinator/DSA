@@ -24,6 +24,10 @@ class DP{
     bool canJump(vector<int> &nums);
     bool canJumpRecurse(vector<int> &nums, int index);
 
+    int numDecodings(string s);
+    int numDecodingRecursive(string s, int index);
+    int numDecodingBottomUp(string s);
+
     private:
     unordered_map<int, int> memoClimbStairs{{1, 1}, {2, 2}};
 };

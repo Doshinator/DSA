@@ -164,3 +164,38 @@ bool DP::canJumpRecurse(vector<int> &nums, int index){
     }
     return false;
 }
+
+
+int DP::numDecodings(string s){
+    return numDecodingRecursive(s, 0);
+}
+
+int DP::numDecodingRecursive(string s, int index){
+    if(index == s.size())
+        return 1;
+
+    if(s[index] == '0')
+        return 0;
+
+    int res = numDecodingRecursive(s, index + 1);
+
+    if(index < s.size() - 1 && 
+        (s[index] == '1' || (s[index] == '2' && s[index + 1] < '7')))
+    res +=  numDecodingRecursive(s, index + 2);
+
+    return res;
+}
+
+int DP::numDecodingBottomUp(string s){
+    int n = s.size();
+    vector<int> dp(n + 1, 0);
+    dp[n] = 1;
+
+    for(int i = n - 1; i >= 0; i--){
+        if(s[i] != '0')
+            dp[i] += dp[i + 1];
+        if(i+1 < s.size() && (s[i] == '1' || (s[i] == '2' && s[i + 1] <= '6')))
+            dp[i] += dp[i + 2];
+    }
+    return dp[0];    
+}
