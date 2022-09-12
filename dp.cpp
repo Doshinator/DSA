@@ -199,3 +199,35 @@ int DP::numDecodingBottomUp(string s){
     }
     return dp[0];    
 }
+
+
+int DP::coinChange(vector<int> &coins, int amount){
+
+}
+
+int DP::coinChangeMemo(vector<int> &coins, int amount){
+    // #1 - base case - if amount == 0, then you can take 0 coins to fufil that condition
+    if(amount == 0)
+        return 0;
+
+    // #2 - choice
+    // choice 1) pick current coin, solve remaining problem
+    // choice 2) don't pick current coin, solve remaining problem
+    // int pick =  1 + min(coinChange(coins[i + 1], amount - coins[i]), coinChange(coins[i], amount - coins[i]));
+
+    // #3 - optimal ; optamize - take only minimum # of coins
+}
+
+int DP::coinChangeBottomUp(vector<int> &coins, int amount){
+    vector<int> dp(amount + 1, amount + 1);
+    dp[0] = 0;
+
+    for(int i = 1; i <= amount; i++){
+        for(int c = 0; c < coins.size(); c++){
+            if(i - coins[c] >= 0)
+                dp[i] = min(1 + dp[i - coins[c]], dp[i]);
+        }
+    }
+
+   return dp[amount] == amount + 1? -1 : dp[amount];
+}
