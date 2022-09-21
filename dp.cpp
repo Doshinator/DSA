@@ -243,6 +243,5 @@ int DP::maxProduct(vector<int>& nums){
             res = max(res, product);
         }
     }
-
     return res;
 }
