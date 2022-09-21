@@ -32,6 +32,8 @@ class DP{
     int coinChangeMemo(vector<int> &coins, int amount);
     int coinChangeBottomUp(vector<int> &coins, int amount);
 
+    int maxProduct(vector<int>& nums);
+
     private:
     unordered_map<int, int> memoClimbStairs{{1, 1}, {2, 2}};
 };

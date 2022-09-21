@@ -231,3 +231,18 @@ int DP::coinChangeBottomUp(vector<int> &coins, int amount){
 
    return dp[amount] == amount + 1? -1 : dp[amount];
 }
+
+
+int DP::maxProduct(vector<int>& nums){
+    // brute force
+    int res = 0;
+    for(int i = 0; i < nums.size(); i++){
+        int product = 1;
+        for(int j = i; j < nums.size(); j++){
+            product = product * nums[j];
+            res = max(res, product);
+        }
+    }
+
+    return res;
+}
