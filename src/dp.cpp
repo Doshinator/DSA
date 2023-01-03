@@ -234,14 +234,39 @@ int DP::coinChangeBottomUp(vector<int> &coins, int amount){
 
 
 int DP::maxProduct(vector<int>& nums){
-    // brute force
+    return maxProductBrute(nums);
+}
+
+int DP::maxProductBrute(vector<int> &nums){
+    //[2, 3, -2, 4]
+    // 1st iteration - i = 0, j = 0 -> 3
+    // 2 * 3 = 6
+    // 6 * -2 = -12
+    // -12 * 4 = -48
+    // 2nd iteration - i = 1, j = 1 -> 3
+    // keep track of max every iteration O(n^2)
     int res = 0;
     for(int i = 0; i < nums.size(); i++){
         int product = 1;
         for(int j = i; j < nums.size(); j++){
-            product = product * nums[j];
+            product *= nums[j];
             res = max(res, product);
         }
     }
+    return res;
+}
+
+
+int DP::maxProductTabulation(vector<int> &nums){
+    int res = nums[0];
+    vector<int> dpMin(nums), dpMax(nums);
+    
+    for(int i = 1; i < nums.size(); i++){
+        int n = nums[i];
+        dpMin[i] = min(n, n * (n >= 0? dpMin[i-1] : dpMax[i-1]));
+        dpMax[i] = max(n, n * (n >= 0? dpMax[i-1] : dpMin[i-1]));
+        res = max(res, dpMax[i]);
+    }
+
     return res;
 }

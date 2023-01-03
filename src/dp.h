@@ -33,6 +33,8 @@ class DP{
     int coinChangeBottomUp(vector<int> &coins, int amount);
 
     int maxProduct(vector<int>& nums);
+    int maxProductBrute(vector<int> &nums);
+    int maxProductTabulation(vector<int> &nums);
 
     private:
     unordered_map<int, int> memoClimbStairs{{1, 1}, {2, 2}};
