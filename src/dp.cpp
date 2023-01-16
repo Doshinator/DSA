@@ -213,7 +213,7 @@ int DP::coinChangeMemo(vector<int> &coins, int amount){
     // #2 - choice
     // choice 1) pick current coin, solve remaining problem
     // choice 2) don't pick current coin, solve remaining problem
-    // int pick =  1 + min(coinChange(coins[i + 1], amount - coins[i]), coinChange(coins[i], amount - coins[i]));
+    // int pick =  1 + min(coinChange(coins[i + 1], amount - coins[i]), coinChange( [i], amount - coins[i]));
 
     // #3 - optimal ; optamize - take only minimum # of coins
 }
@@ -270,3 +270,26 @@ int DP::maxProductTabulation(vector<int> &nums){
 
     return res;
 }
+
+
+bool DP::canPartition(vector<int> &nums){
+    
+
+    return false;
+}
+
+
+int DP::fib(int n){
+    int dp[30] = {0};
+    // base case : what is the smallest valid input?
+    if(n <= 2)
+        return n;
+
+    // choice / decision
+    // if table is no filled, fill it
+    if(dp[n] == 0)
+        dp[n] = fib(n - 1) + fib(n - 2);
+
+    return dp[n];
+}
+
