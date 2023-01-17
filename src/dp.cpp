@@ -282,7 +282,7 @@ bool DP::canPartition(vector<int> &nums){
 int DP::fib(int n){
     int dp[30] = {0};
     // base case : what is the smallest valid input?
-    if(n <= 2)
+    if(n <= 1)
         return n;
 
     // choice / decision
